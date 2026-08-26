@@ -1,5 +1,7 @@
+"use client";
+
 import { FormEvent, useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import {
   Eye,
   EyeOff,
@@ -13,7 +15,6 @@ import { fazerLogin } from "../../data/authStore";
 
 export default function LoginPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
@@ -41,7 +42,8 @@ export default function LoginPage() {
         return;
       }
 
-      const destinoInformado = searchParams.get("redirect") || "/";
+      const destinoInformado =
+        new URLSearchParams(window.location.search).get("redirect") || "/";
       const destino =
         destinoInformado.startsWith("/") && !destinoInformado.startsWith("//")
           ? destinoInformado

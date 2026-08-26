@@ -9,11 +9,7 @@
  */
 
 export type PapelUsuario =
-  | "administrador"
-  | "gerente"
-  | "financeiro"
-  | "vendas"
-  | "estoque";
+  "administrador" | "gerente" | "financeiro" | "vendas" | "estoque";
 
 export type ModuloSistema =
   | "dashboard"
@@ -218,12 +214,7 @@ export function obterPermissoesPadrao(papel: PapelUsuario): Permissoes {
         estoque: ["visualizar", "criar", "editar", "estornar"],
         clientes: ["visualizar"],
         fornecedores: ["visualizar"],
-        compras: [
-          "visualizar",
-          "criar",
-          "editar",
-          "receber" as AcaoPermissao,
-        ].filter((acao): acao is AcaoPermissao => TODAS_ACOES.includes(acao)),
+        compras: ["visualizar", "criar", "editar"],
         relatorios: ["visualizar"],
       };
   }

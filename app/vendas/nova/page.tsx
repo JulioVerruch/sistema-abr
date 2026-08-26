@@ -377,7 +377,7 @@ export default function NovaVendaPage() {
 
   function obterEstoqueDoItem(item: ItemVenda): number {
     const produto = produtos.find(
-      (produtoAtual) => produtoAtual.id === item.produtoId,
+      (produtoAtual) => String(produtoAtual.id) === String(item.produtoId),
     );
 
     if (produto) {
@@ -394,11 +394,15 @@ export default function NovaVendaPage() {
   }
 
   const itensComEstoqueInsuficiente = useMemo(() => {
+    if (configuracoes.estoque.permitirEstoqueNegativo) {
+      return [];
+    }
+
     return itens.filter((item) => {
       const estoque = obterEstoqueDoItem(item);
       return item.quantidade > estoque;
     });
-  }, [itens, produtos]);
+  }, [itens, produtos, configuracoes.estoque.permitirEstoqueNegativo]);
 
   /* =========================================================
      SELECIONAR CLIENTE
@@ -440,7 +444,9 @@ export default function NovaVendaPage() {
       return;
     }
 
-    const itemExistente = itens.find((item) => item.produtoId === produto.id);
+    const itemExistente = itens.find(
+      (item) => String(item.produtoId) === String(produto.id),
+    );
 
     if (itemExistente) {
       if (itemExistente.quantidade >= estoque) {
@@ -462,7 +468,7 @@ export default function NovaVendaPage() {
     const novoItem: ItemVenda = {
       id: `item-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
 
-      produtoId: produto.id,
+      produtoId: String(produto.id),
 
       produtoNome: produto.nome,
 
@@ -939,7 +945,8 @@ export default function NovaVendaPage() {
                         const estoque = obterEstoqueProduto(produto);
 
                         const jaAdicionado = itens.some(
-                          (item) => item.produtoId === produto.id,
+                          (item) =>
+                            String(item.produtoId) === String(produto.id),
                         );
 
                         return (

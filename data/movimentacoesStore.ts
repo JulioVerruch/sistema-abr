@@ -303,7 +303,7 @@ export function registrarMovimentacao(
   const movimentacao: MovimentacaoEstoque = {
     id: gerarIdMovimentacao(),
 
-    produtoId: produto.id,
+    produtoId: String(produto.id),
 
     produtoCodigo: produto.codigo,
 

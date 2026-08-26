@@ -291,9 +291,9 @@ export default function MovimentarEstoquePage() {
       registrarMovimentacao({
         codigoProduto: produtoSelecionado.codigo,
 
-        tipo: tipo as TipoMovimentacao,
+        tipo,
 
-        motivo,
+        motivo: motivo as Exclude<MotivoMovimentacao, "estorno">,
 
         quantidade: quantidadeNumerica,
 

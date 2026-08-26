@@ -118,9 +118,7 @@ export default function RelatoriosPage() {
     eventos.forEach((evento) => window.addEventListener(evento, carregar));
 
     return () => {
-      eventos.forEach((evento) =>
-        window.removeEventListener(evento, carregar),
-      );
+      eventos.forEach((evento) => window.removeEventListener(evento, carregar));
     };
   }, [inicio, fim]);
 
@@ -137,14 +135,14 @@ export default function RelatoriosPage() {
       <main className="admin-page relatorio-page relatorio-gerencial-page">
         <header className="relatorio-header">
           <div>
-            <Link href="/relatorios" className="relatorio-back">
-              <ArrowLeft size={15} /> Relatórios
+            <Link href="/analises" className="relatorio-back">
+              <ArrowLeft size={15} /> Análises
             </Link>
             <span className="admin-eyebrow">VISÃO GERENCIAL</span>
             <h1>Relatório Gerencial</h1>
             <p>
-              Uma visão consolidada de vendas, compras e movimentação
-              financeira no período selecionado.
+              Uma visão consolidada de vendas, compras e movimentação financeira
+              no período selecionado.
             </p>
           </div>
 
@@ -154,10 +152,7 @@ export default function RelatoriosPage() {
             onClick={carregar}
             disabled={atualizando}
           >
-            <RefreshCw
-              size={16}
-              className={atualizando ? "is-spinning" : ""}
-            />
+            <RefreshCw size={16} className={atualizando ? "is-spinning" : ""} />
             Atualizar
           </button>
         </header>
@@ -188,8 +183,7 @@ export default function RelatoriosPage() {
           <div className="relatorio-gerencial-filter-note">
             <span>Período analisado</span>
             <strong>
-              {new Date(`${inicio}T12:00:00`).toLocaleDateString("pt-BR")}{" "}
-              —{" "}
+              {new Date(`${inicio}T12:00:00`).toLocaleDateString("pt-BR")} —{" "}
               {new Date(`${fim}T12:00:00`).toLocaleDateString("pt-BR")}
             </strong>
           </div>
@@ -202,9 +196,7 @@ export default function RelatoriosPage() {
             </div>
             <span>Faturamento</span>
             <strong>{moeda(dados.faturamento)}</strong>
-            <small>
-              {inteiro(dados.vendasConcluidas)} vendas concluídas
-            </small>
+            <small>{inteiro(dados.vendasConcluidas)} vendas concluídas</small>
           </article>
 
           <article className="relatorio-kpi">
@@ -213,9 +205,7 @@ export default function RelatoriosPage() {
             </div>
             <span>Compras</span>
             <strong>{moeda(dados.compras)}</strong>
-            <small>
-              {inteiro(dados.comprasConcluidas)} compras recebidas
-            </small>
+            <small>{inteiro(dados.comprasConcluidas)} compras recebidas</small>
           </article>
 
           <article className="relatorio-kpi">
@@ -264,10 +254,18 @@ export default function RelatoriosPage() {
           {dados.evolucaoPorPeriodo.length ? (
             <div className="gerencial-evolucao">
               <div className="gerencial-evolucao-legend">
-                <span><i className="is-vendas" /> Vendas</span>
-                <span><i className="is-compras" /> Compras</span>
-                <span><i className="is-entradas" /> Entradas</span>
-                <span><i className="is-saidas" /> Saídas</span>
+                <span>
+                  <i className="is-vendas" /> Vendas
+                </span>
+                <span>
+                  <i className="is-compras" /> Compras
+                </span>
+                <span>
+                  <i className="is-entradas" /> Entradas
+                </span>
+                <span>
+                  <i className="is-saidas" /> Saídas
+                </span>
               </div>
 
               {dados.evolucaoPorPeriodo.map((item) => (
@@ -420,7 +418,9 @@ export default function RelatoriosPage() {
                 ))}
               </div>
             ) : (
-              <div className="relatorio-empty">Sem movimentação no período.</div>
+              <div className="relatorio-empty">
+                Sem movimentação no período.
+              </div>
             )}
           </article>
         </section>

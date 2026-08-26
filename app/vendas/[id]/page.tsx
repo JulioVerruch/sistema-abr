@@ -356,7 +356,7 @@ export default function VendaDetalhesPage() {
 
               <h3>{obterStatusLabel(venda.status)}</h3>
 
-              <p>Venda registrada em {formatarData(venda.criadoEm)}</p>
+              <p>Venda registrada em {formatarData(venda.dataCriacao)}</p>
             </div>
           </div>
 
@@ -605,7 +605,7 @@ export default function VendaDetalhesPage() {
                 <div>
                   <span>Data de criação</span>
 
-                  <strong>{formatarData(venda.criadoEm)}</strong>
+                  <strong>{formatarData(venda.dataCriacao)}</strong>
                 </div>
 
                 <div>

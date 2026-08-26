@@ -580,7 +580,7 @@ export default function AnalisesPage() {
                     />
                     <Tooltip
                       contentStyle={TOOLTIP_STYLE}
-                      formatter={(valor: number | string, nome: string) => [
+                      formatter={(valor, nome) => [
                         moeda(Number(valor)),
                         nome === "faturamento" ? "Faturamento" : "Lucro bruto",
                       ]}
@@ -654,7 +654,7 @@ export default function AnalisesPage() {
                     />
                     <Tooltip
                       contentStyle={TOOLTIP_STYLE}
-                      formatter={(valor: number | string, nome: string) => [
+                      formatter={(valor, nome) => [
                         moeda(Number(valor)),
                         nome === "entradas" ? "Entradas" : "Saídas",
                       ]}
@@ -735,7 +735,7 @@ export default function AnalisesPage() {
                       </Pie>
                       <Tooltip
                         contentStyle={TOOLTIP_STYLE}
-                        formatter={(valor: number | string) => [
+                        formatter={(valor) => [
                           moeda(Number(valor)),
                           "Faturamento",
                         ]}
@@ -813,7 +813,7 @@ export default function AnalisesPage() {
                     />
                     <Tooltip
                       contentStyle={TOOLTIP_STYLE}
-                      formatter={(valor: number | string, nome: string) => [
+                      formatter={(valor, nome) => [
                         moeda(Number(valor)),
                         nome === "faturamento" ? "Faturamento" : "Lucro bruto",
                       ]}
@@ -892,7 +892,7 @@ export default function AnalisesPage() {
                     />
                     <Tooltip
                       contentStyle={TOOLTIP_STYLE}
-                      formatter={(valor: number | string) => [
+                      formatter={(valor) => [
                         `${Number(valor).toFixed(1).replace(".", ",")}%`,
                         "Margem",
                       ]}
@@ -956,7 +956,7 @@ export default function AnalisesPage() {
                     />
                     <Tooltip
                       contentStyle={TOOLTIP_STYLE}
-                      formatter={(valor: number | string) => [
+                      formatter={(valor) => [
                         moeda(Number(valor)),
                         "Faturamento",
                       ]}
@@ -1020,7 +1020,7 @@ export default function AnalisesPage() {
                     />
                     <Tooltip
                       contentStyle={TOOLTIP_STYLE}
-                      formatter={(valor: number | string) => [
+                      formatter={(valor) => [
                         moeda(Number(valor)),
                         "Total comprado",
                       ]}
@@ -1088,7 +1088,7 @@ export default function AnalisesPage() {
                     />
                     <Tooltip
                       contentStyle={TOOLTIP_STYLE}
-                      formatter={(valor: number | string, nome: string) => [
+                      formatter={(valor, nome) => [
                         inteiro(Number(valor)),
                         nome === "estoque"
                           ? "Estoque atual"

@@ -551,11 +551,19 @@ export function validarItemVenda(item: Partial<ItemVenda>): string | null {
     return "Informe o nome do produto.";
   }
 
-  if (!Number.isFinite(item.quantidade) || item.quantidade <= 0) {
+  if (
+    typeof item.quantidade !== "number" ||
+    !Number.isFinite(item.quantidade) ||
+    item.quantidade <= 0
+  ) {
     return "A quantidade deve ser maior que zero.";
   }
 
-  if (!Number.isFinite(item.precoUnitario) || item.precoUnitario < 0) {
+  if (
+    typeof item.precoUnitario !== "number" ||
+    !Number.isFinite(item.precoUnitario) ||
+    item.precoUnitario < 0
+  ) {
     return "O preço unitário é inválido.";
   }
 
@@ -602,7 +610,11 @@ export function validarDadosVenda(
     return "O desconto da venda é inválido.";
   }
 
-  if (!Number.isFinite(dados.total) || (dados.total ?? 0) < 0) {
+  if (
+    typeof dados.total !== "number" ||
+    !Number.isFinite(dados.total) ||
+    dados.total < 0
+  ) {
     return "O total da venda é inválido.";
   }
 
@@ -1291,9 +1303,7 @@ export function obterResumoVendas(): ResumoVendas {
 
   const concluidas = vendas.filter((venda) => venda.status === "concluida");
 
-  const pendentes = vendas.filter(
-    (venda) => venda.status === "pendente" || venda.status === "parcial",
-  );
+  const pendentes = vendas.filter((venda) => venda.status === "pendente");
 
   const rascunhos = vendas.filter((venda) => venda.status === "rascunho");
 

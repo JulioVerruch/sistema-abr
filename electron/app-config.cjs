@@ -11,7 +11,7 @@ const DESKTOP_CONFIG = {
   devUrl: process.env.ABR_DESKTOP_DEV_URL || "http://localhost:3000",
 
   productionUrl:
-    process.env.ABR_DESKTOP_PRODUCTION_URL || "https://SEU-PROJETO.vercel.app",
+    process.env.ABR_DESKTOP_PRODUCTION_URL || "https://sistema-abr.vercel.app/",
 };
 
 module.exports = {

@@ -13,6 +13,8 @@ import {
   Settings,
   ShoppingCart,
   Store,
+  Moon,
+  Sun,
 } from "lucide-react";
 
 import { AppShell } from "../../components/layout/AppShell";
@@ -23,9 +25,15 @@ import {
   restaurarConfiguracoesPadrao,
   salvarConfiguracoes,
   type ConfiguracoesSistema,
+  type TemaSistema,
 } from "../../data/configuracoesStore";
 
-type AbaConfiguracao = "empresa" | "comercial" | "financeira" | "estoque";
+type AbaConfiguracao =
+  | "empresa"
+  | "comercial"
+  | "financeira"
+  | "estoque"
+  | "aparencia";
 
 const abas: Array<{
   id: AbaConfiguracao;
@@ -57,11 +65,27 @@ const abas: Array<{
     descricao: "Regras operacionais",
     icone: Package,
   },
+  {
+    id: "aparencia",
+    titulo: "Aparência",
+    descricao: "Tema do sistema",
+    icone: Settings,
+  },
 ];
 
 function numero(valor: string) {
   const n = Number(valor.replace(",", "."));
   return Number.isFinite(n) ? n : 0;
+}
+
+function aplicarTema(tema: TemaSistema) {
+  if (typeof document === "undefined") return;
+
+  document.documentElement.dataset.tema = tema;
+
+  // Mantém componentes legados que consultem color-scheme sincronizados.
+  document.documentElement.style.colorScheme =
+    tema === "claro" ? "light" : "dark";
 }
 
 export default function ConfiguracoesPage() {
@@ -75,11 +99,13 @@ export default function ConfiguracoesPage() {
     const config = obterConfiguracoes();
     setDados(config);
     setSalvoEm(config.atualizadoEm);
+    aplicarTema(config.tema);
 
     const atualizar = () => {
       const atual = obterConfiguracoes();
       setDados(atual);
       setSalvoEm(atual.atualizadoEm);
+      aplicarTema(atual.tema);
     };
 
     window.addEventListener(EVENTO_ATUALIZADO, atualizar);
@@ -98,6 +124,7 @@ export default function ConfiguracoesPage() {
 
     const resultado = salvarConfiguracoes(dados);
 
+    aplicarTema(resultado.tema);
     setDados(resultado);
     setSalvoEm(resultado.atualizadoEm);
     setMensagem("Configurações salvas com sucesso.");
@@ -117,6 +144,7 @@ export default function ConfiguracoesPage() {
 
     const resultado = restaurarConfiguracoesPadrao();
 
+    aplicarTema(resultado.tema);
     setDados(resultado);
     setSalvoEm(resultado.atualizadoEm);
     setMensagem("Configurações padrão restauradas.");
@@ -738,6 +766,129 @@ export default function ConfiguracoesPage() {
               </>
             )}
 
+            {aba === "aparencia" && (
+              <>
+                <div className="configuracao-secao-header">
+                  <div>
+                    <span>PERSONALIZAÇÃO</span>
+                    <h2>Aparência do sistema</h2>
+                    <p>
+                      Escolha o tema visual utilizado em todo o Sistema ABR.
+                    </p>
+                  </div>
+                  {dados.tema === "claro" ? (
+                    <Sun size={21} />
+                  ) : (
+                    <Moon size={21} />
+                  )}
+                </div>
+
+                <div className="tema-configuracao">
+                  <div className="tema-configuracao-intro">
+                    <div>
+                      <strong>Tema do sistema</strong>
+                      <p>
+                        A alteração é aplicada imediatamente e fica salva nas
+                        configurações do ABR Agro.
+                      </p>
+                    </div>
+
+                    <span className="tema-atual-badge">
+                      {dados.tema === "claro" ? "Claro" : "Escuro"}
+                    </span>
+                  </div>
+
+                  <div
+                    className="tema-opcoes"
+                    role="radiogroup"
+                    aria-label="Tema do sistema"
+                  >
+                    <button
+                      type="button"
+                      role="radio"
+                      aria-checked={dados.tema === "escuro"}
+                      className={
+                        dados.tema === "escuro"
+                          ? "tema-opcao is-active"
+                          : "tema-opcao"
+                      }
+                      onClick={() => {
+                        setDados((atual) => ({
+                          ...atual,
+                          tema: "escuro",
+                        }));
+                        aplicarTema("escuro");
+                      }}
+                    >
+                      <span className="tema-preview tema-preview-escuro">
+                        <span className="tema-preview-topbar" />
+                        <span className="tema-preview-sidebar" />
+                        <span className="tema-preview-card tema-preview-card-1" />
+                        <span className="tema-preview-card tema-preview-card-2" />
+                      </span>
+
+                      <span className="tema-opcao-conteudo">
+                        <span className="tema-opcao-icone">
+                          <Moon size={17} />
+                        </span>
+                        <span>
+                          <strong>Escuro</strong>
+                          <small>Recomendado para uso prolongado.</small>
+                        </span>
+                      </span>
+
+                      <span className="tema-radio-indicator" />
+                    </button>
+
+                    <button
+                      type="button"
+                      role="radio"
+                      aria-checked={dados.tema === "claro"}
+                      className={
+                        dados.tema === "claro"
+                          ? "tema-opcao is-active"
+                          : "tema-opcao"
+                      }
+                      onClick={() => {
+                        setDados((atual) => ({
+                          ...atual,
+                          tema: "claro",
+                        }));
+                        aplicarTema("claro");
+                      }}
+                    >
+                      <span className="tema-preview tema-preview-claro">
+                        <span className="tema-preview-topbar" />
+                        <span className="tema-preview-sidebar" />
+                        <span className="tema-preview-card tema-preview-card-1" />
+                        <span className="tema-preview-card tema-preview-card-2" />
+                      </span>
+
+                      <span className="tema-opcao-conteudo">
+                        <span className="tema-opcao-icone">
+                          <Sun size={17} />
+                        </span>
+                        <span>
+                          <strong>Claro</strong>
+                          <small>Visual claro para ambientes iluminados.</small>
+                        </span>
+                      </span>
+
+                      <span className="tema-radio-indicator" />
+                    </button>
+                  </div>
+
+                  <div className="tema-configuracao-aviso">
+                    <Settings size={16} />
+                    <span>
+                      A preferência é armazenada junto com as configurações do
+                      sistema e acompanha os dados sincronizados.
+                    </span>
+                  </div>
+                </div>
+              </>
+            )}
+
             <footer className="configuracoes-rodape">
               <span>
                 {salvoEm
@@ -753,6 +904,7 @@ export default function ConfiguracoesPage() {
                   onClick={() => {
                     const atual = obterConfiguracoes();
                     setDados(atual);
+                    aplicarTema(atual.tema);
                     setMensagem("Alterações locais descartadas.");
                   }}
                 >

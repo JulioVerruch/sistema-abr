@@ -28627,3 +28627,2055 @@ button.vendas-resumo-card {
     padding: 18px;
   }
 }
+
+/* =========================================================
+   TEMA DO SISTEMA — CLARO / ESCURO
+========================================================= */
+
+html {
+  color-scheme: dark;
+}
+
+html[data-tema="claro"] {
+  color-scheme: light;
+
+  --bg: #f4f6f3;
+  --bg-secondary: #ffffff;
+  --card: #ffffff;
+  --card-soft: #f3f5f3;
+
+  --muted: #68736d;
+  --muted-light: #46514b;
+
+  --line: rgba(20, 35, 27, 0.1);
+  --line-strong: rgba(20, 35, 27, 0.16);
+
+  --green: #245f3b;
+  --green-light: #2f7a4d;
+  --green-soft: #e7f0ea;
+  --green-glow: rgba(47, 122, 77, 0.12);
+
+  --gold: #c78d10;
+  --gold-light: #a56d00;
+  --gold-dark: #875900;
+  --gold-glow: rgba(199, 141, 16, 0.14);
+
+  --white: #142019;
+  --black: #ffffff;
+
+  --success: #18874d;
+  --warning: #a66b00;
+  --danger: #c33f3f;
+  --info: #286fa8;
+
+  --shadow-sm: 0 4px 14px rgba(31, 52, 40, 0.07);
+  --shadow-md: 0 12px 32px rgba(31, 52, 40, 0.1);
+  --shadow-lg: 0 24px 70px rgba(31, 52, 40, 0.14);
+}
+
+html[data-tema="claro"] body {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(47, 122, 77, 0.09), transparent 28%),
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(199, 141, 16, 0.07),
+      transparent 25%
+    ),
+    linear-gradient(180deg, #f7f9f7 0%, #eef2ef 100%);
+  color: var(--white);
+}
+
+html[data-tema="claro"] .admin-shell {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(47, 122, 77, 0.08), transparent 30%),
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(199, 141, 16, 0.06),
+      transparent 25%
+    ),
+    linear-gradient(180deg, #f7f9f7 0%, #edf1ee 100%);
+}
+
+html[data-tema="claro"] .admin-sidebar {
+  background: rgba(249, 251, 249, 0.94);
+  border-right-color: var(--line);
+}
+
+html[data-tema="claro"] .admin-topbar {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.97) 0%,
+    rgba(248, 250, 248, 0.96) 100%
+  );
+  border-bottom-color: var(--line);
+}
+
+html[data-tema="claro"] .admin-nav-link {
+  color: #56615b;
+}
+
+html[data-tema="claro"] .admin-nav-link:hover {
+  color: #1d2b23;
+  background: rgba(47, 122, 77, 0.07);
+  border-color: rgba(47, 122, 77, 0.22);
+}
+
+html[data-tema="claro"] .admin-nav-link.is-active {
+  color: #193022;
+  background: linear-gradient(
+    135deg,
+    rgba(47, 122, 77, 0.13),
+    rgba(47, 122, 77, 0.05)
+  );
+  border-color: rgba(47, 122, 77, 0.27);
+}
+
+html[data-tema="claro"] .admin-nav-label,
+html[data-tema="claro"] .admin-brand span,
+html[data-tema="claro"] .admin-topbar p,
+html[data-tema="claro"] .admin-page-header p,
+html[data-tema="claro"] .admin-card p,
+html[data-tema="claro"] .text-muted {
+  color: var(--muted);
+}
+
+html[data-tema="claro"] .admin-brand strong,
+html[data-tema="claro"] .admin-topbar h1,
+html[data-tema="claro"] .admin-page h2,
+html[data-tema="claro"] .admin-card h3,
+html[data-tema="claro"] .admin-kpi-card strong,
+html[data-tema="claro"] .admin-shortcut strong,
+html[data-tema="claro"] .configuracao-secao-header h2,
+html[data-tema="claro"] .configuracao-subsecao-title {
+  color: #17231c;
+}
+
+html[data-tema="claro"] .admin-sidebar-card,
+html[data-tema="claro"] .admin-card,
+html[data-tema="claro"] .admin-kpi-card,
+html[data-tema="claro"] .admin-actions {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.96),
+    rgba(249, 251, 249, 0.96)
+  );
+  border-color: var(--line);
+  box-shadow: var(--shadow-sm);
+}
+
+html[data-tema="claro"] .admin-shortcut,
+html[data-tema="claro"] .admin-stats > div,
+html[data-tema="claro"] .admin-table-wrap,
+html[data-tema="claro"] .configuracoes-conteudo,
+html[data-tema="claro"] .configuracao-switch,
+html[data-tema="claro"] .configuracao-tag {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: var(--line);
+}
+
+html[data-tema="claro"] .admin-shortcut:hover {
+  background: rgba(47, 122, 77, 0.05);
+  border-color: rgba(47, 122, 77, 0.2);
+}
+
+html[data-tema="claro"] .admin-table th {
+  background: #f2f5f2;
+  color: #6b766f;
+}
+
+html[data-tema="claro"] .admin-table td {
+  color: #29352e;
+}
+
+html[data-tema="claro"] .admin-table tbody tr:hover td {
+  background: rgba(47, 122, 77, 0.045);
+}
+
+html[data-tema="claro"] .input,
+html[data-tema="claro"] .select,
+html[data-tema="claro"] .textarea,
+html[data-tema="claro"] .configuracao-field input,
+html[data-tema="claro"] .vendas-input,
+html[data-tema="claro"] input,
+html[data-tema="claro"] select,
+html[data-tema="claro"] textarea {
+  background: #ffffff;
+  color: #1c2922;
+  border-color: rgba(20, 35, 27, 0.14);
+}
+
+html[data-tema="claro"] .input::placeholder,
+html[data-tema="claro"] .textarea::placeholder,
+html[data-tema="claro"] .configuracao-field input::placeholder {
+  color: #9aa59f;
+}
+
+html[data-tema="claro"] .input:focus,
+html[data-tema="claro"] .select:focus,
+html[data-tema="claro"] .textarea:focus,
+html[data-tema="claro"] .configuracao-field input:focus {
+  border-color: rgba(47, 122, 77, 0.42);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(47, 122, 77, 0.09);
+}
+
+html[data-tema="claro"] .btn {
+  color: #26352d;
+  background: rgba(255, 255, 255, 0.84);
+  border-color: rgba(20, 35, 27, 0.14);
+}
+
+html[data-tema="claro"] .btn:hover {
+  background: #ffffff;
+  border-color: rgba(20, 35, 27, 0.21);
+}
+
+html[data-tema="claro"] .btn.primary {
+  color: #ffffff;
+}
+
+html[data-tema="claro"] .btn.gold {
+  color: #241b08;
+}
+
+html[data-tema="claro"] .configuracao-menu-item {
+  color: #59655f;
+}
+
+html[data-tema="claro"] .configuracao-menu-item:hover {
+  background: rgba(47, 122, 77, 0.05);
+  color: #1f2b24;
+}
+
+html[data-tema="claro"] .configuracao-menu-item.is-active {
+  color: #1f2b24;
+  border-color: rgba(199, 141, 16, 0.2);
+  background: rgba(199, 141, 16, 0.08);
+}
+
+html[data-tema="claro"] .configuracao-menu-icon {
+  background: rgba(20, 35, 27, 0.045);
+}
+
+html[data-tema="claro"]
+  .configuracao-menu-item.is-active
+  .configuracao-menu-icon {
+  background: rgba(199, 141, 16, 0.1);
+}
+
+html[data-tema="claro"] .configuracao-field > span,
+html[data-tema="claro"] .configuracao-secao-header p,
+html[data-tema="claro"] .configuracao-switch small,
+html[data-tema="claro"] .configuracoes-rodape > span,
+html[data-tema="claro"] .configuracoes-rodape > span,
+html[data-tema="claro"] .admin-table th,
+html[data-tema="claro"] .admin-stats span {
+  color: #6c7771;
+}
+
+html[data-tema="claro"] .configuracao-switch strong {
+  color: #26332c;
+}
+
+html[data-tema="claro"] .configuracao-tag {
+  color: #647069;
+}
+
+html[data-tema="claro"] .configuracao-tag:hover {
+  color: #213028;
+}
+
+html[data-tema="claro"] ::-webkit-scrollbar-track {
+  background: #edf1ee;
+}
+
+html[data-tema="claro"] ::-webkit-scrollbar-thumb {
+  background: #c7d0ca;
+}
+
+html[data-tema="claro"] ::-webkit-scrollbar-thumb:hover {
+  background: #adb9b1;
+}
+
+html[data-tema="claro"] ::selection {
+  background: rgba(199, 141, 16, 0.24);
+  color: #17231c;
+}
+
+html[data-tema="claro"] .login-page {
+  background:
+    radial-gradient(
+      circle at 50% 18%,
+      rgba(199, 141, 16, 0.07),
+      transparent 32%
+    ),
+    #f3f5f3;
+}
+
+html[data-tema="claro"] .login-card {
+  background: rgba(255, 255, 255, 0.97);
+  border-color: rgba(20, 35, 27, 0.1);
+  box-shadow:
+    0 30px 70px rgba(31, 52, 40, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+html[data-tema="claro"] .login-card-header h1 {
+  color: #16221b;
+}
+
+html[data-tema="claro"] .login-card-header p,
+html[data-tema="claro"] .login-field > span,
+html[data-tema="claro"] .login-security,
+html[data-tema="claro"] .login-footer {
+  color: #718078;
+}
+
+html[data-tema="claro"] .login-input-wrapper {
+  background: #ffffff;
+  border-color: rgba(20, 35, 27, 0.13);
+}
+
+html[data-tema="claro"] .login-input-wrapper input {
+  color: #1c2922;
+}
+
+html[data-tema="claro"] .login-input-wrapper input::placeholder {
+  color: #9aa59f;
+}
+
+/* =========================================================
+   CONFIGURAÇÃO — SELETOR DE TEMA
+========================================================= */
+
+.tema-configuracao {
+  display: grid;
+  gap: 18px;
+}
+
+.tema-configuracao-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.022);
+}
+
+.tema-configuracao-intro strong {
+  display: block;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.tema-configuracao-intro p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.tema-atual-badge {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border: 1px solid rgba(220, 164, 44, 0.2);
+  border-radius: 999px;
+  background: rgba(220, 164, 44, 0.08);
+  color: var(--gold-light);
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tema-opcoes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.tema-opcao {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  padding: 12px;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.022);
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.tema-opcao:hover {
+  transform: translateY(-2px);
+  border-color: rgba(220, 164, 44, 0.24);
+  background: rgba(220, 164, 44, 0.035);
+}
+
+.tema-opcao.is-active {
+  border-color: rgba(220, 164, 44, 0.48);
+  box-shadow:
+    0 0 0 2px rgba(220, 164, 44, 0.09),
+    0 16px 34px rgba(0, 0, 0, 0.1);
+}
+
+.tema-preview {
+  position: relative;
+  height: 126px;
+  overflow: hidden;
+  border: 1px solid rgba(20, 35, 27, 0.13);
+  border-radius: 11px;
+  background: #0e1210;
+}
+
+.tema-preview-topbar {
+  position: absolute;
+  inset: 0 0 auto 30px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.tema-preview-sidebar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 30px;
+  background: rgba(5, 7, 6, 0.9);
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.tema-preview-card {
+  position: absolute;
+  border-radius: 6px;
+}
+
+.tema-preview-card-1 {
+  top: 34px;
+  left: 42px;
+  right: 10px;
+  height: 34px;
+}
+
+.tema-preview-card-2 {
+  left: 42px;
+  bottom: 14px;
+  width: 58px;
+  height: 38px;
+}
+
+.tema-preview-escuro .tema-preview-card-1,
+.tema-preview-escuro .tema-preview-card-2 {
+  background: linear-gradient(135deg, #1d2821, #121814);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tema-preview-escuro .tema-preview-card-1::after {
+  content: "";
+  display: block;
+  width: 42%;
+  height: 4px;
+  margin: 9px;
+  border-radius: 4px;
+  background: #dca42c;
+}
+
+.tema-preview-claro {
+  background: #f2f5f2;
+}
+
+.tema-preview-claro .tema-preview-topbar {
+  background: #ffffff;
+  border-bottom-color: rgba(20, 35, 27, 0.08);
+}
+
+.tema-preview-claro .tema-preview-sidebar {
+  background: #f8faf8;
+  border-right-color: rgba(20, 35, 27, 0.08);
+}
+
+.tema-preview-claro .tema-preview-card-1,
+.tema-preview-claro .tema-preview-card-2 {
+  background: #ffffff;
+  border: 1px solid rgba(20, 35, 27, 0.08);
+}
+
+.tema-preview-claro .tema-preview-card-1::after {
+  content: "";
+  display: block;
+  width: 42%;
+  height: 4px;
+  margin: 9px;
+  border-radius: 4px;
+  background: #c78d10;
+}
+
+.tema-opcao-conteudo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 2px;
+}
+
+.tema-opcao-icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border-radius: 9px;
+  color: var(--gold);
+  background: rgba(220, 164, 44, 0.08);
+}
+
+.tema-opcao-conteudo strong {
+  display: block;
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.tema-opcao-conteudo small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.tema-radio-indicator {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 17px;
+  height: 17px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  background: transparent;
+}
+
+.tema-opcao.is-active .tema-radio-indicator {
+  border-color: var(--gold);
+  box-shadow: inset 0 0 0 4px var(--card);
+  background: var(--gold);
+}
+
+.tema-configuracao-aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 12px;
+  border: 1px solid rgba(220, 164, 44, 0.13);
+  border-radius: 11px;
+  background: rgba(220, 164, 44, 0.035);
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.tema-configuracao-aviso svg {
+  flex: 0 0 auto;
+  color: var(--gold);
+}
+
+html[data-tema="claro"] .tema-configuracao-intro,
+html[data-tema="claro"] .tema-opcao {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(20, 35, 27, 0.1);
+}
+
+html[data-tema="claro"] .tema-opcao:hover {
+  background: rgba(255, 255, 255, 0.96);
+}
+
+html[data-tema="claro"] .tema-configuracao-intro strong,
+html[data-tema="claro"] .tema-opcao-conteudo strong {
+  color: #1d2a22;
+}
+
+html[data-tema="claro"] .tema-radio-indicator {
+  border-color: rgba(20, 35, 27, 0.2);
+}
+
+html[data-tema="claro"] .tema-opcao.is-active .tema-radio-indicator {
+  box-shadow: inset 0 0 0 4px #ffffff;
+}
+
+@media (max-width: 700px) {
+  .tema-opcoes {
+    grid-template-columns: 1fr;
+  }
+
+  .tema-configuracao-intro {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+/* =========================================================
+   TEMA CLARO — CORREÇÃO DE CONTRASTE ABR AGRO
+   ========================================================= */
+
+html[data-tema="claro"] {
+  --bg: #eef1ee;
+  --bg-secondary: #f7f9f7;
+  --card: #ffffff;
+  --card-soft: #f5f7f5;
+
+  --muted: #66736b;
+  --muted-light: #3f4b44;
+
+  --line: rgba(27, 42, 34, 0.1);
+  --line-strong: rgba(27, 42, 34, 0.16);
+
+  --green: #245d3a;
+  --green-light: #31774d;
+  --green-soft: #e5eee8;
+  --green-glow: rgba(49, 119, 77, 0.12);
+
+  --gold: #c58b0f;
+  --gold-light: #a66e00;
+  --gold-dark: #885900;
+  --gold-glow: rgba(197, 139, 15, 0.12);
+
+  --white: #18231d;
+  --black: #ffffff;
+
+  --success: #17804a;
+  --warning: #a76f00;
+  --danger: #c64040;
+  --info: #2e72a8;
+}
+
+/* ---------------------------------------------------------
+   BASE
+   --------------------------------------------------------- */
+
+html[data-tema="claro"] body {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(49, 119, 77, 0.07), transparent 28%),
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(197, 139, 15, 0.05),
+      transparent 24%
+    ),
+    linear-gradient(180deg, #f2f4f2 0%, #e9eeeb 100%);
+
+  color: #18231d;
+}
+
+/* ---------------------------------------------------------
+   SHELL
+   --------------------------------------------------------- */
+
+html[data-tema="claro"] .admin-shell {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(49, 119, 77, 0.06), transparent 30%),
+    linear-gradient(180deg, #f3f5f3 0%, #e9eeeb 100%);
+}
+
+/* ---------------------------------------------------------
+   SIDEBAR
+   --------------------------------------------------------- */
+
+html[data-tema="claro"] .admin-sidebar {
+  background: rgba(247, 249, 247, 0.96);
+  border-right: 1px solid rgba(27, 42, 34, 0.1);
+}
+
+html[data-tema="claro"] .admin-brand strong {
+  color: #18231d;
+}
+
+html[data-tema="claro"] .admin-brand span {
+  color: #738078;
+}
+
+html[data-tema="claro"] .admin-nav-label {
+  color: #768179;
+}
+
+html[data-tema="claro"] .admin-nav-link {
+  color: #59665f;
+}
+
+html[data-tema="claro"] .admin-nav-link:hover {
+  color: #1b2b22;
+  background: rgba(49, 119, 77, 0.055);
+}
+
+html[data-tema="claro"] .admin-nav-link.is-active {
+  color: #173323;
+  background: linear-gradient(
+    135deg,
+    rgba(49, 119, 77, 0.13),
+    rgba(49, 119, 77, 0.05)
+  );
+}
+
+/* ---------------------------------------------------------
+   TOPBAR
+   --------------------------------------------------------- */
+
+html[data-tema="claro"] .admin-topbar {
+  background: rgba(250, 251, 250, 0.96);
+  border-bottom-color: rgba(27, 42, 34, 0.09);
+}
+
+html[data-tema="claro"] .admin-eyebrow {
+  color: #b17a00;
+}
+
+html[data-tema="claro"] .admin-topbar h1 {
+  color: #17231c;
+}
+
+html[data-tema="claro"] .admin-topbar p {
+  color: #6d7972;
+}
+
+/* ---------------------------------------------------------
+   BOTÕES
+   --------------------------------------------------------- */
+
+html[data-tema="claro"] .btn {
+  color: #25332b;
+  background: #ffffff;
+  border-color: rgba(27, 42, 34, 0.14);
+}
+
+html[data-tema="claro"] .btn:hover {
+  background: #f8faf8;
+  border-color: rgba(27, 42, 34, 0.22);
+}
+
+html[data-tema="claro"] .btn.primary {
+  color: #ffffff;
+}
+
+html[data-tema="claro"] .btn.gold {
+  color: #241b08;
+}
+
+/* ---------------------------------------------------------
+   CARDS / PAINÉIS
+   --------------------------------------------------------- */
+
+html[data-tema="claro"] .admin-card,
+html[data-tema="claro"] .admin-kpi-card,
+html[data-tema="claro"] .admin-actions,
+html[data-tema="claro"] .admin-sidebar-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(249, 251, 249, 0.98)
+  );
+
+  border-color: rgba(27, 42, 34, 0.1);
+
+  box-shadow: 0 8px 26px rgba(28, 46, 36, 0.06);
+}
+
+html[data-tema="claro"] .admin-card h3 {
+  color: #1b2921;
+}
+
+html[data-tema="claro"] .admin-card p {
+  color: #68746d;
+}
+
+/* ---------------------------------------------------------
+   KPI
+   --------------------------------------------------------- */
+
+html[data-tema="claro"] .admin-kpi-card span {
+  color: #728078;
+}
+
+html[data-tema="claro"] .admin-kpi-card strong {
+  color: #17231c;
+}
+
+html[data-tema="claro"] .admin-kpi-card p {
+  color: #77827c;
+}
+
+/* Corrige textos que estavam usando branco fixo */
+html[data-tema="claro"] .admin-kpi-card strong,
+html[data-tema="claro"] .admin-kpi-card p,
+html[data-tema="claro"] .admin-kpi-card span {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------
+   ATALHOS / LISTAGENS
+   --------------------------------------------------------- */
+
+html[data-tema="claro"] .admin-shortcut {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(27, 42, 34, 0.09);
+}
+
+html[data-tema="claro"] .admin-shortcut strong {
+  color: #1c2922;
+}
+
+html[data-tema="claro"] .admin-shortcut span {
+  color: #69756e;
+}
+
+/* ---------------------------------------------------------
+   ESTATÍSTICAS
+   --------------------------------------------------------- */
+
+html[data-tema="claro"] .admin-stats > div {
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(27, 42, 34, 0.09);
+}
+
+html[data-tema="claro"] .admin-stats strong {
+  color: #18231d;
+}
+
+html[data-tema="claro"] .admin-stats span {
+  color: #718078;
+}
+
+/* ---------------------------------------------------------
+   TABELAS
+   --------------------------------------------------------- */
+
+html[data-tema="claro"] .admin-table-wrap {
+  background: #ffffff;
+  border-color: rgba(27, 42, 34, 0.1);
+}
+
+html[data-tema="claro"] .admin-table th {
+  background: #f0f3f0;
+  color: #67736c;
+  border-bottom-color: rgba(27, 42, 34, 0.09);
+}
+
+html[data-tema="claro"] .admin-table td {
+  color: #2a362f;
+  border-bottom-color: rgba(27, 42, 34, 0.07);
+}
+
+html[data-tema="claro"] .admin-table tbody tr:hover td {
+  background: rgba(49, 119, 77, 0.045);
+}
+
+/* ---------------------------------------------------------
+   FORMULÁRIOS
+   --------------------------------------------------------- */
+
+html[data-tema="claro"] .input,
+html[data-tema="claro"] .select,
+html[data-tema="claro"] .textarea {
+  background: #ffffff;
+  color: #1e2b24;
+  border-color: rgba(27, 42, 34, 0.14);
+}
+
+html[data-tema="claro"] .input::placeholder,
+html[data-tema="claro"] .textarea::placeholder {
+  color: #98a29c;
+}
+
+/* ---------------------------------------------------------
+   LINKS / TEXTOS
+   --------------------------------------------------------- */
+
+html[data-tema="claro"] .text-muted {
+  color: #68746d;
+}
+
+html[data-tema="claro"] .text-gold {
+  color: #a66f00;
+}
+
+html[data-tema="claro"] .text-green {
+  color: #16824b;
+}
+
+html[data-tema="claro"] .text-danger {
+  color: #c64040;
+}
+
+/* ---------------------------------------------------------
+   CONFIGURAÇÕES
+   --------------------------------------------------------- */
+
+html[data-tema="claro"] .configuracoes-conteudo {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(27, 42, 34, 0.09);
+}
+
+html[data-tema="claro"] .configuracao-field > span {
+  color: #69756e;
+}
+
+html[data-tema="claro"] .configuracao-field input {
+  background: #ffffff;
+  color: #1d2a22;
+}
+
+html[data-tema="claro"] .configuracao-switch {
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(27, 42, 34, 0.09);
+}
+
+html[data-tema="claro"] .configuracao-switch strong {
+  color: #26342c;
+}
+
+html[data-tema="claro"] .configuracao-switch small {
+  color: #748078;
+}
+
+/* ---------------------------------------------------------
+   BUSCA / INPUTS DO TOPO
+   --------------------------------------------------------- */
+
+html[data-tema="claro"] input,
+html[data-tema="claro"] select,
+html[data-tema="claro"] textarea {
+  color: #1d2a22;
+}
+
+html[data-tema="claro"] input::placeholder {
+  color: #9aa49e;
+}
+
+/* ---------------------------------------------------------
+   SCROLLBAR
+   --------------------------------------------------------- */
+
+html[data-tema="claro"] ::-webkit-scrollbar-track {
+  background: #e7ebe8;
+}
+
+html[data-tema="claro"] ::-webkit-scrollbar-thumb {
+  background: #bdc7c0;
+}
+
+html[data-tema="claro"] ::-webkit-scrollbar-thumb:hover {
+  background: #a8b4ac;
+}
+/* =========================================================
+   TEMA CLARO ABR AGRO — CORREÇÃO DEFINITIVA DE CONTRASTE
+   ========================================================= */
+
+html[data-tema="claro"] {
+  --bg: #e8ece9;
+  --bg-secondary: #f1f4f2;
+  --card: #f8faf9;
+  --card-soft: #eef2ef;
+
+  --muted: #647169;
+  --muted-light: #445149;
+
+  --line: rgba(24, 40, 31, 0.11);
+  --line-strong: rgba(24, 40, 31, 0.18);
+
+  --white: #18241d;
+
+  --green: #245d3a;
+  --green-light: #31784d;
+  --green-soft: #e1ece5;
+
+  --gold: #b77d00;
+  --gold-light: #9a6800;
+  --gold-dark: #805400;
+
+  --success: #16834a;
+  --warning: #a56d00;
+  --danger: #c43f3f;
+  --info: #2d70a6;
+}
+
+/* =========================================================
+   FUNDO GERAL
+   ========================================================= */
+
+html[data-tema="claro"] body {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(49, 120, 77, 0.055), transparent 28%),
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(183, 125, 0, 0.04),
+      transparent 25%
+    ),
+    linear-gradient(180deg, #eef1ef 0%, #e5eae7 100%);
+
+  color: #18241d;
+}
+
+/* =========================================================
+   SHELL
+   ========================================================= */
+
+html[data-tema="claro"] .admin-shell {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(49, 120, 77, 0.055), transparent 30%),
+    linear-gradient(180deg, #eff2f0 0%, #e5eae7 100%);
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+html[data-tema="claro"] .admin-sidebar {
+  background: #f5f7f5;
+  border-right: 1px solid rgba(24, 40, 31, 0.1);
+}
+
+html[data-tema="claro"] .admin-brand strong {
+  color: #16231b !important;
+}
+
+html[data-tema="claro"] .admin-brand span {
+  color: #718078 !important;
+}
+
+html[data-tema="claro"] .admin-nav-label {
+  color: #7a857f !important;
+}
+
+html[data-tema="claro"] .admin-nav-link {
+  color: #536159 !important;
+}
+
+html[data-tema="claro"] .admin-nav-link svg {
+  color: #607067;
+}
+
+html[data-tema="claro"] .admin-nav-link:hover {
+  color: #17271e !important;
+  background: rgba(49, 120, 77, 0.055);
+}
+
+html[data-tema="claro"] .admin-nav-link.is-active {
+  color: #173224 !important;
+  background: linear-gradient(
+    135deg,
+    rgba(49, 120, 77, 0.13),
+    rgba(49, 120, 77, 0.045)
+  );
+  border-color: rgba(49, 120, 77, 0.25);
+}
+
+/* =========================================================
+   TOPBAR
+   ========================================================= */
+
+html[data-tema="claro"] .admin-topbar {
+  background: #f8faf8;
+  border-bottom-color: rgba(24, 40, 31, 0.09);
+}
+
+html[data-tema="claro"] .admin-topbar h1 {
+  color: #17231c !important;
+}
+
+html[data-tema="claro"] .admin-topbar p {
+  color: #69766e !important;
+}
+
+/* =========================================================
+   TÍTULOS E TEXTOS PRINCIPAIS
+   ========================================================= */
+
+html[data-tema="claro"] .admin-page h1,
+html[data-tema="claro"] .admin-page h2,
+html[data-tema="claro"] .admin-page h3,
+html[data-tema="claro"] .admin-page h4,
+html[data-tema="claro"] .admin-page strong {
+  color: #17231c !important;
+}
+
+html[data-tema="claro"] .admin-page p {
+  color: #68756d !important;
+}
+
+html[data-tema="claro"] .admin-eyebrow,
+html[data-tema="claro"] .admin-page .admin-eyebrow {
+  color: #a96f00 !important;
+}
+
+/* =========================================================
+   KPI — CORREÇÃO DOS TEXTOS QUE ESTÃO SUMINDO
+   ========================================================= */
+
+html[data-tema="claro"] .admin-kpi-card {
+  background: linear-gradient(180deg, #fbfcfb, #f5f8f6) !important;
+
+  border-color: rgba(24, 40, 31, 0.1);
+}
+
+html[data-tema="claro"] .admin-kpi-card span {
+  color: #748078 !important;
+}
+
+html[data-tema="claro"] .admin-kpi-card strong {
+  color: #17231c !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .admin-kpi-card p {
+  color: #69766f !important;
+}
+
+html[data-tema="claro"] .admin-kpi-card svg {
+  opacity: 1;
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+html[data-tema="claro"] .admin-card,
+html[data-tema="claro"] .admin-actions,
+html[data-tema="claro"] .admin-sidebar-card {
+  background: linear-gradient(180deg, #fafcfb, #f4f7f5) !important;
+
+  border-color: rgba(24, 40, 31, 0.1);
+  color: #18241d;
+}
+
+html[data-tema="claro"] .admin-card h3 {
+  color: #1b2921 !important;
+}
+
+html[data-tema="claro"] .admin-card p {
+  color: #68756d !important;
+}
+
+/* =========================================================
+   LISTAS / ATALHOS
+   ========================================================= */
+
+html[data-tema="claro"] .admin-shortcut {
+  background: #f9fbfa !important;
+  border-color: rgba(24, 40, 31, 0.09);
+}
+
+html[data-tema="claro"] .admin-shortcut strong {
+  color: #1d2b23 !important;
+}
+
+html[data-tema="claro"] .admin-shortcut span {
+  color: #68756d !important;
+}
+
+/* =========================================================
+   ESTATÍSTICAS
+   ========================================================= */
+
+html[data-tema="claro"] .admin-stats > div {
+  background: #f9fbfa !important;
+  border-color: rgba(24, 40, 31, 0.09);
+}
+
+html[data-tema="claro"] .admin-stats strong {
+  color: #18241d !important;
+}
+
+html[data-tema="claro"] .admin-stats span {
+  color: #707c74 !important;
+}
+
+/* =========================================================
+   TABELAS
+   ========================================================= */
+
+html[data-tema="claro"] .admin-table-wrap {
+  background: #f9fbfa !important;
+  border-color: rgba(24, 40, 31, 0.1);
+}
+
+html[data-tema="claro"] .admin-table th {
+  color: #657269 !important;
+  background: #edf1ee !important;
+}
+
+html[data-tema="claro"] .admin-table td {
+  color: #29372f !important;
+}
+
+html[data-tema="claro"] .admin-table td strong {
+  color: #1c2922 !important;
+}
+
+html[data-tema="claro"] .admin-table tbody tr:hover td {
+  background: rgba(49, 120, 77, 0.045) !important;
+}
+
+/* =========================================================
+   PRODUTOS
+   ========================================================= */
+
+html[data-tema="claro"] .product-name strong {
+  color: #1c2922 !important;
+}
+
+html[data-tema="claro"] .product-name span {
+  color: #707c75 !important;
+}
+
+html[data-tema="claro"] .price.cost {
+  color: #4b5750 !important;
+}
+
+html[data-tema="claro"] .price.sale {
+  color: #986500 !important;
+}
+
+html[data-tema="claro"] .price.profit {
+  color: #177c49 !important;
+}
+
+/* =========================================================
+   FORMULÁRIOS
+   ========================================================= */
+
+html[data-tema="claro"] .input,
+html[data-tema="claro"] .select,
+html[data-tema="claro"] .textarea,
+html[data-tema="claro"] input,
+html[data-tema="claro"] select,
+html[data-tema="claro"] textarea {
+  background: #ffffff !important;
+  color: #1c2922 !important;
+  border-color: rgba(24, 40, 31, 0.15);
+}
+
+html[data-tema="claro"] .input::placeholder,
+html[data-tema="claro"] .textarea::placeholder,
+html[data-tema="claro"] input::placeholder {
+  color: #9aa49e !important;
+}
+
+/* =========================================================
+   BOTÕES
+   ========================================================= */
+
+html[data-tema="claro"] .btn {
+  color: #25332b !important;
+  background: #f9fbfa;
+  border-color: rgba(24, 40, 31, 0.14);
+}
+
+html[data-tema="claro"] .btn.primary {
+  color: #ffffff !important;
+}
+
+html[data-tema="claro"] .btn.gold {
+  color: #251c08 !important;
+}
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+html[data-tema="claro"] .tag {
+  color: #976400 !important;
+}
+
+html[data-tema="claro"] .tag.success {
+  color: #167a48 !important;
+}
+
+html[data-tema="claro"] .tag.warning {
+  color: #976500 !important;
+}
+
+html[data-tema="claro"] .tag.danger {
+  color: #bf3d3d !important;
+}
+
+html[data-tema="claro"] .text-gold {
+  color: #9b6800 !important;
+}
+
+html[data-tema="claro"] .text-green {
+  color: #167c48 !important;
+}
+
+html[data-tema="claro"] .text-danger {
+  color: #bd3e3e !important;
+}
+
+html[data-tema="claro"] .text-muted {
+  color: #69766e !important;
+}
+
+/* =========================================================
+   CONFIGURAÇÕES
+   ========================================================= */
+
+html[data-tema="claro"] .configuracoes-conteudo {
+  background: rgba(250, 252, 251, 0.86) !important;
+  border-color: rgba(24, 40, 31, 0.09);
+}
+
+html[data-tema="claro"] .configuracao-secao-header h2 {
+  color: #18241d !important;
+}
+
+html[data-tema="claro"] .configuracao-secao-header p {
+  color: #68756d !important;
+}
+
+html[data-tema="claro"] .configuracao-field > span {
+  color: #69766e !important;
+}
+
+html[data-tema="claro"] .configuracao-field input {
+  color: #1d2a22 !important;
+  background: #ffffff !important;
+}
+
+html[data-tema="claro"] .configuracao-subsecao-title {
+  color: #1d2a22 !important;
+}
+
+html[data-tema="claro"] .configuracao-switch strong {
+  color: #28362e !important;
+}
+
+html[data-tema="claro"] .configuracao-switch small {
+  color: #748078 !important;
+}
+
+html[data-tema="claro"] .configuracoes-rodape > span {
+  color: #748078 !important;
+}
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+html[data-tema="claro"] .login-page {
+  background:
+    radial-gradient(
+      circle at 50% 15%,
+      rgba(183, 125, 0, 0.06),
+      transparent 30%
+    ),
+    #e9eeeb;
+}
+
+html[data-tema="claro"] .login-card {
+  background: linear-gradient(180deg, #fafcfa, #f3f6f4) !important;
+
+  border-color: rgba(24, 40, 31, 0.1);
+}
+
+html[data-tema="claro"] .login-card-header h1 {
+  color: #17231c !important;
+}
+
+html[data-tema="claro"] .login-card-header p,
+html[data-tema="claro"] .login-field > span {
+  color: #6a776f !important;
+}
+
+html[data-tema="claro"] .login-input-wrapper {
+  background: #ffffff !important;
+}
+
+html[data-tema="claro"] .login-input-wrapper input {
+  color: #1d2a22 !important;
+}
+
+/* =========================================================
+   APARÊNCIA — SELETOR DE TEMA
+   ========================================================= */
+
+html[data-tema="claro"] .tema-configuracao-intro,
+html[data-tema="claro"] .tema-opcao {
+  background: #fafcfb !important;
+  border-color: rgba(24, 40, 31, 0.1);
+}
+
+html[data-tema="claro"] .tema-configuracao-intro strong,
+html[data-tema="claro"] .tema-opcao-conteudo strong {
+  color: #1c2922 !important;
+}
+
+html[data-tema="claro"] .tema-configuracao-intro p,
+html[data-tema="claro"] .tema-opcao-conteudo small {
+  color: #6b786f !important;
+}
+
+html[data-tema="claro"] .tema-atual-badge {
+  color: #946300 !important;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+html[data-tema="claro"] ::-webkit-scrollbar-track {
+  background: #e3e8e5;
+}
+
+html[data-tema="claro"] ::-webkit-scrollbar-thumb {
+  background: #bbc5be;
+}
+
+html[data-tema="claro"] ::-webkit-scrollbar-thumb:hover {
+  background: #a5b1a9;
+}
+
+/* =========================================================
+   TRANSIÇÃO SUAVE
+   ========================================================= */
+
+html[data-tema="claro"] body,
+html[data-tema="claro"] .admin-shell,
+html[data-tema="claro"] .admin-sidebar,
+html[data-tema="claro"] .admin-topbar,
+html[data-tema="claro"] .admin-card,
+html[data-tema="claro"] .admin-kpi-card,
+html[data-tema="claro"] .admin-actions {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+/* =========================================================
+   ABR AGRO — TEMA CLARO FINAL
+   Base grafite suave / contraste alto / sem branco estourado
+   ========================================================= */
+
+html[data-tema="claro"] {
+  --bg: #dfe5e2;
+  --bg-secondary: #e8ecea;
+  --card: #edf1ef;
+  --card-soft: #e6ebe8;
+  --muted: #5b6861;
+  --muted-light: #3c4942;
+  --line: rgba(25, 40, 32, 0.13);
+  --line-strong: rgba(25, 40, 32, 0.21);
+  --white: #17231c;
+  --black: #ffffff;
+  --green: #245b39;
+  --green-light: #2f7449;
+  --green-soft: #dfeae3;
+  --green-glow: rgba(47, 116, 73, 0.12);
+  --gold: #b47b00;
+  --gold-light: #936300;
+  --gold-dark: #774f00;
+  --gold-glow: rgba(180, 123, 0, 0.12);
+  --success: #167847;
+  --warning: #9c6800;
+  --danger: #bf3d3d;
+  --info: #2c6da0;
+}
+
+/* fundo */
+html[data-tema="claro"] body {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(47, 116, 73, 0.08), transparent 28%),
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(180, 123, 0, 0.05),
+      transparent 24%
+    ),
+    linear-gradient(180deg, #e7ebe9 0%, #dce2df 100%) !important;
+  color: #17231c !important;
+}
+
+html[data-tema="claro"] .admin-shell {
+  background: linear-gradient(180deg, #e9edeb 0%, #dde3e0 100%) !important;
+}
+
+/* sidebar */
+html[data-tema="claro"] .admin-sidebar {
+  background: #e7ece9 !important;
+  border-right-color: rgba(25, 40, 32, 0.12) !important;
+}
+html[data-tema="claro"] .admin-brand strong {
+  color: #16221b !important;
+}
+html[data-tema="claro"] .admin-brand span {
+  color: #68756e !important;
+}
+html[data-tema="claro"] .admin-nav-label {
+  color: #718078 !important;
+}
+html[data-tema="claro"] .admin-nav-link {
+  color: #45534b !important;
+}
+html[data-tema="claro"] .admin-nav-link svg {
+  color: #56655d !important;
+}
+html[data-tema="claro"] .admin-nav-link:hover {
+  color: #18261f !important;
+  background: rgba(47, 116, 73, 0.07) !important;
+}
+html[data-tema="claro"] .admin-nav-link.is-active {
+  color: #153022 !important;
+  background: rgba(47, 116, 73, 0.12) !important;
+  border-color: rgba(47, 116, 73, 0.24) !important;
+}
+
+/* topbar */
+html[data-tema="claro"] .admin-topbar {
+  background: #e6ebe8 !important;
+  border-bottom-color: rgba(25, 40, 32, 0.11) !important;
+}
+html[data-tema="claro"] .admin-topbar h1 {
+  color: #17231c !important;
+}
+html[data-tema="claro"] .admin-topbar p {
+  color: #65726b !important;
+}
+html[data-tema="claro"] .admin-eyebrow {
+  color: #9a6700 !important;
+}
+
+/* shell de conteúdo */
+html[data-tema="claro"] .admin-content,
+html[data-tema="claro"] .admin-page {
+  color: #1b2821 !important;
+}
+html[data-tema="claro"] .admin-page h1,
+html[data-tema="claro"] .admin-page h2,
+html[data-tema="claro"] .admin-page h3,
+html[data-tema="claro"] .admin-page h4,
+html[data-tema="claro"] .admin-page h5,
+html[data-tema="claro"] .admin-page h6 {
+  color: #17231c !important;
+}
+html[data-tema="claro"] .admin-page p,
+html[data-tema="claro"] .admin-page small,
+html[data-tema="claro"] .admin-page label {
+  color: #5f6d65 !important;
+}
+
+/* cards */
+html[data-tema="claro"] .admin-card,
+html[data-tema="claro"] .admin-kpi-card,
+html[data-tema="claro"] .admin-actions,
+html[data-tema="claro"] .admin-sidebar-card,
+html[data-tema="claro"] .relatorio-card,
+html[data-tema="claro"] .relatorio-kpi,
+html[data-tema="claro"] .financeiro-resumo-card,
+html[data-tema="claro"] .vendas-resumo-card,
+html[data-tema="claro"] .caixa-card {
+  background: linear-gradient(180deg, #edf1ef, #e6ebe8) !important;
+  color: #17231c !important;
+  border-color: rgba(25, 40, 32, 0.12) !important;
+  box-shadow: 0 8px 24px rgba(35, 52, 43, 0.055) !important;
+}
+
+/* evita qualquer texto branco herdado dos estilos específicos */
+html[data-tema="claro"] .admin-card span,
+html[data-tema="claro"] .admin-card strong,
+html[data-tema="claro"] .admin-card p,
+html[data-tema="claro"] .admin-kpi-card span,
+html[data-tema="claro"] .admin-kpi-card strong,
+html[data-tema="claro"] .admin-kpi-card p,
+html[data-tema="claro"] .relatorio-card span,
+html[data-tema="claro"] .relatorio-card strong,
+html[data-tema="claro"] .relatorio-card p,
+html[data-tema="claro"] .relatorio-kpi span,
+html[data-tema="claro"] .relatorio-kpi strong,
+html[data-tema="claro"] .relatorio-kpi p {
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .admin-kpi-card span,
+html[data-tema="claro"] .relatorio-kpi span,
+html[data-tema="claro"] .financeiro-resumo-card span,
+html[data-tema="claro"] .vendas-resumo-card span {
+  color: #65736b !important;
+}
+html[data-tema="claro"] .admin-kpi-card strong,
+html[data-tema="claro"] .relatorio-kpi strong,
+html[data-tema="claro"] .financeiro-resumo-card strong,
+html[data-tema="claro"] .vendas-resumo-card strong {
+  color: #17231c !important;
+}
+
+/* -------- VENDAS -------- */
+html[data-tema="claro"] .vendas-resumo-card {
+  background: #edf1ef !important;
+}
+html[data-tema="claro"] .vendas-resumo-card:hover,
+html[data-tema="claro"] .vendas-resumo-card.ativo {
+  background: #e5ebe8 !important;
+}
+html[data-tema="claro"] .vendas-resumo-icon,
+html[data-tema="claro"] .vendas-resumo-icon.valor,
+html[data-tema="claro"] .vendas-resumo-icon.cancelada,
+html[data-tema="claro"] .vendas-resumo-icon.pendente,
+html[data-tema="claro"] .vendas-resumo-icon.sucesso {
+  opacity: 1 !important;
+}
+html[data-tema="claro"] .vendas-tabela-wrapper,
+html[data-tema="claro"] .vendas-tabela,
+html[data-tema="claro"] .vendas-lista-card,
+html[data-tema="claro"] .vendas-filtros {
+  background: #e9eeeb !important;
+  color: #1b2821 !important;
+  border-color: rgba(25, 40, 32, 0.12) !important;
+}
+html[data-tema="claro"] .vendas-tabela-header,
+html[data-tema="claro"] .vendas-tabela-row {
+  color: #26342c !important;
+  border-color: rgba(25, 40, 32, 0.09) !important;
+}
+html[data-tema="claro"] .venda-numero,
+html[data-tema="claro"] .venda-cliente,
+html[data-tema="claro"] .venda-data,
+html[data-tema="claro"] .venda-itens,
+html[data-tema="claro"] .venda-pagamento,
+html[data-tema="claro"] .venda-total,
+html[data-tema="claro"] .venda-numero strong,
+html[data-tema="claro"] .venda-cliente strong,
+html[data-tema="claro"] .venda-data strong,
+html[data-tema="claro"] .venda-itens strong,
+html[data-tema="claro"] .venda-pagamento strong,
+html[data-tema="claro"] .venda-total strong {
+  color: #26342d !important;
+}
+html[data-tema="claro"] .venda-data,
+html[data-tema="claro"] .venda-itens,
+html[data-tema="claro"] .venda-pagamento {
+  color: #66736b !important;
+}
+html[data-tema="claro"] .vendas-busca input,
+html[data-tema="claro"] .vendas-filtro-pagamento select,
+html[data-tema="claro"] .vendas-filtro-status select {
+  background: #f0f3f1 !important;
+  color: #26342c !important;
+  border-color: rgba(25, 40, 32, 0.15) !important;
+}
+html[data-tema="claro"] .vendas-busca input::placeholder {
+  color: #89958e !important;
+}
+html[data-tema="claro"] .vendas-filtro-status button,
+html[data-tema="claro"] .vendas-filtro-pagamento button {
+  background: #e1e6e3 !important;
+  color: #526059 !important;
+  border-color: rgba(25, 40, 32, 0.12) !important;
+}
+
+/* -------- RELATÓRIOS / ESTOQUE / FINANCEIRO -------- */
+html[data-tema="claro"] .relatorio-header h1,
+html[data-tema="claro"] .relatorio-header h2,
+html[data-tema="claro"] .relatorio-card-header h2,
+html[data-tema="claro"] .relatorio-card-header h3 {
+  color: #17231c !important;
+}
+html[data-tema="claro"] .relatorio-header p,
+html[data-tema="claro"] .relatorio-card-header p,
+html[data-tema="claro"] .relatorio-periodo,
+html[data-tema="claro"] .relatorio-periodo-label {
+  color: #68756d !important;
+}
+html[data-tema="claro"] .relatorio-table-wrap,
+html[data-tema="claro"] .relatorio-table {
+  background: #edf1ef !important;
+  color: #24312a !important;
+}
+html[data-tema="claro"] .relatorio-table th {
+  background: #dde3df !important;
+  color: #5f6c65 !important;
+}
+html[data-tema="claro"] .relatorio-table td {
+  color: #2b3931 !important;
+  border-color: rgba(25, 40, 32, 0.08) !important;
+}
+html[data-tema="claro"] .relatorio-list-row {
+  color: #26342d !important;
+  border-color: rgba(25, 40, 32, 0.08) !important;
+}
+html[data-tema="claro"] .relatorio-list-row span {
+  color: #68756d !important;
+}
+html[data-tema="claro"] .relatorio-filter,
+html[data-tema="claro"] .relatorio-filtros,
+html[data-tema="claro"] .relatorio-filtro {
+  color: #27342d !important;
+}
+html[data-tema="claro"] .relatorio-filtro input,
+html[data-tema="claro"] .relatorio-filtro select {
+  background: #f0f3f1 !important;
+  color: #25332b !important;
+}
+
+/* financeiro específicos */
+html[data-tema="claro"] .financeiro-lista-header p,
+html[data-tema="claro"] .financeiro-resumo-card span,
+html[data-tema="claro"] .financeiro-filtros label,
+html[data-tema="claro"] .financeiro-filtro-tabs button,
+html[data-tema="claro"] .financeiro-busca > svg {
+  color: #65736b !important;
+}
+html[data-tema="claro"] .financeiro-resumo-card strong {
+  color: #17231c !important;
+}
+html[data-tema="claro"] .financeiro-filtros {
+  background: #e8edeb !important;
+  border-color: rgba(25, 40, 32, 0.1) !important;
+}
+html[data-tema="claro"] .financeiro-busca input,
+html[data-tema="claro"] .financeiro-filtro-tabs button {
+  background: #f0f3f1 !important;
+  color: #29372f !important;
+  border-color: rgba(25, 40, 32, 0.13) !important;
+}
+html[data-tema="claro"] .financeiro-filtro-tabs button.active {
+  color: #8b5c00 !important;
+  background: #e7ddc7 !important;
+  border-color: rgba(180, 123, 0, 0.35) !important;
+}
+
+/* -------- ESTOQUE -------- */
+html[data-tema="claro"] .relatorio-kpi-icon,
+html[data-tema="claro"] .relatorio-kpi-icon svg,
+html[data-tema="claro"] .relatorio-card-header svg {
+  opacity: 1 !important;
+}
+html[data-tema="claro"] .relatorio-value-danger {
+  color: #b83b3b !important;
+}
+html[data-tema="claro"] .relatorio-value-success {
+  color: #137545 !important;
+}
+
+/* -------- FORMULÁRIOS GERAIS -------- */
+html[data-tema="claro"] input,
+html[data-tema="claro"] select,
+html[data-tema="claro"] textarea,
+html[data-tema="claro"] .input,
+html[data-tema="claro"] .select,
+html[data-tema="claro"] .textarea {
+  background: #f1f4f2 !important;
+  color: #26342d !important;
+  border-color: rgba(25, 40, 32, 0.15) !important;
+}
+html[data-tema="claro"] input::placeholder,
+html[data-tema="claro"] textarea::placeholder,
+html[data-tema="claro"] .input::placeholder,
+html[data-tema="claro"] .textarea::placeholder {
+  color: #929d96 !important;
+}
+
+/* -------- CONFIGURAÇÕES -------- */
+html[data-tema="claro"] .configuracoes-conteudo,
+html[data-tema="claro"] .configuracoes-menu {
+  color: #233129 !important;
+}
+html[data-tema="claro"] .configuracao-secao-header h2,
+html[data-tema="claro"] .configuracao-subsecao-title {
+  color: #17231c !important;
+}
+html[data-tema="claro"] .configuracao-secao-header p,
+html[data-tema="claro"] .configuracao-field > span,
+html[data-tema="claro"] .configuracao-switch small {
+  color: #66736b !important;
+}
+
+/* -------- ANÁLISES -------- */
+html[data-tema="claro"] .analises-page,
+html[data-tema="claro"] .analises-page section,
+html[data-tema="claro"] .analises-page article {
+  color: #26342d !important;
+}
+html[data-tema="claro"] .analises-page h1,
+html[data-tema="claro"] .analises-page h2,
+html[data-tema="claro"] .analises-page h3,
+html[data-tema="claro"] .analises-page strong {
+  color: #17231c !important;
+}
+html[data-tema="claro"] .analises-page p,
+html[data-tema="claro"] .analises-page span,
+html[data-tema="claro"] .analises-page small {
+  color: #627068 !important;
+}
+html[data-tema="claro"] .analises-page .recharts-text,
+html[data-tema="claro"] .analises-page .recharts-cartesian-axis-tick-value,
+html[data-tema="claro"] .analises-page .recharts-legend-item-text {
+  fill: #56635c !important;
+  color: #56635c !important;
+}
+html[data-tema="claro"] .analises-page .recharts-cartesian-grid-horizontal line,
+html[data-tema="claro"] .analises-page .recharts-cartesian-grid-vertical line {
+  stroke: rgba(39, 57, 47, 0.12) !important;
+}
+
+/* -------- CAIXA / CONTAS -------- */
+html[data-tema="claro"] .caixa-page,
+html[data-tema="claro"] .contas-pagar-page,
+html[data-tema="claro"] .financeiro-page,
+html[data-tema="claro"] .financeiro-detalhe-page {
+  color: #233129 !important;
+}
+html[data-tema="claro"] .caixa-page h1,
+html[data-tema="claro"] .caixa-page h2,
+html[data-tema="claro"] .contas-pagar-page h1,
+html[data-tema="claro"] .contas-pagar-page h2,
+html[data-tema="claro"] .financeiro-page h1,
+html[data-tema="claro"] .financeiro-page h2 {
+  color: #17231c !important;
+}
+
+/* -------- BOTÕES / LINKS FIXOS -------- */
+html[data-tema="claro"] button:not(.btn.primary):not(.btn.gold) {
+  color: #2d3932;
+}
+html[data-tema="claro"] button:not(.btn.primary):not(.btn.gold):hover {
+  color: #17231c;
+}
+html[data-tema="claro"] .btn.primary {
+  color: #fff !important;
+}
+html[data-tema="claro"] .btn.gold {
+  color: #241b08 !important;
+}
+
+/* -------- ÍCONES -------- */
+html[data-tema="claro"] .admin-card svg,
+html[data-tema="claro"] .admin-kpi-card svg,
+html[data-tema="claro"] .relatorio-card svg,
+html[data-tema="claro"] .financeiro-resumo-card svg,
+html[data-tema="claro"] .vendas-resumo-card svg {
+  opacity: 1 !important;
+}
+
+/* -------- NÃO PERTURBAR O LOGIN -------- */
+html[data-tema="claro"] .login-card-header h1,
+html[data-tema="claro"] .login-input-wrapper input,
+html[data-tema="claro"] .login-card-header p,
+html[data-tema="claro"] .login-field > span,
+html[data-tema="claro"] .login-security,
+html[data-tema="claro"] .login-footer {
+  opacity: 1 !important;
+}
+
+/* -------- TRANSIÇÃO -------- */
+html[data-tema="claro"] body,
+html[data-tema="claro"] .admin-shell,
+html[data-tema="claro"] .admin-sidebar,
+html[data-tema="claro"] .admin-topbar,
+html[data-tema="claro"] .admin-card,
+html[data-tema="claro"] .admin-kpi-card,
+html[data-tema="claro"] .relatorio-card,
+html[data-tema="claro"] .financeiro-resumo-card,
+html[data-tema="claro"] .vendas-resumo-card {
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+/* =========================================================
+   TEMA CLARO — BOTÕES DE AÇÃO PRINCIPAIS
+   Correção de contraste
+========================================================= */
+
+html[data-tema="claro"] .btn.primary,
+html[data-tema="claro"] .admin-page-actions .btn.primary,
+html[data-tema="claro"] .compras-header .btn.primary,
+html[data-tema="claro"] .clientes-page .btn.primary,
+html[data-tema="claro"] .fornecedores-page .btn.primary,
+html[data-tema="claro"] .produtos-page .btn.primary,
+html[data-tema="claro"] .vendas-page .btn.primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+
+  color: #ffffff !important;
+
+  background: linear-gradient(135deg, #347d50 0%, #245d3a 100%) !important;
+
+  border: 1px solid #347d50 !important;
+
+  box-shadow: 0 8px 20px rgba(36, 93, 58, 0.18) !important;
+
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .btn.primary:hover,
+html[data-tema="claro"] .admin-page-actions .btn.primary:hover,
+html[data-tema="claro"] .compras-header .btn.primary:hover,
+html[data-tema="claro"] .clientes-page .btn.primary:hover,
+html[data-tema="claro"] .fornecedores-page .btn.primary:hover,
+html[data-tema="claro"] .produtos-page .btn.primary:hover,
+html[data-tema="claro"] .vendas-page .btn.primary:hover {
+  color: #ffffff !important;
+
+  background: linear-gradient(135deg, #3d8d5b 0%, #286a41 100%) !important;
+
+  border-color: #347d50 !important;
+
+  box-shadow: 0 12px 26px rgba(36, 93, 58, 0.24) !important;
+
+  transform: translateY(-1px) !important;
+}
+
+html[data-tema="claro"] .btn.primary svg,
+html[data-tema="claro"] .admin-page-actions .btn.primary svg,
+html[data-tema="claro"] .compras-header .btn.primary svg,
+html[data-tema="claro"] .clientes-page .btn.primary svg,
+html[data-tema="claro"] .fornecedores-page .btn.primary svg,
+html[data-tema="claro"] .produtos-page .btn.primary svg,
+html[data-tema="claro"] .vendas-page .btn.primary svg {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Botões dourados */
+html[data-tema="claro"] .btn.gold {
+  color: #241b08 !important;
+
+  background: linear-gradient(135deg, #d5a324 0%, #b77d00 100%) !important;
+
+  border-color: #b77d00 !important;
+
+  box-shadow: 0 8px 20px rgba(183, 125, 0, 0.16) !important;
+}
+
+html[data-tema="claro"] .btn.gold:hover {
+  color: #241b08 !important;
+
+  background: linear-gradient(135deg, #dfae32 0%, #c48b0d 100%) !important;
+
+  border-color: #b77d00 !important;
+}
+
+/* Botões secundários */
+html[data-tema="claro"] .admin-page-actions .btn:not(.primary):not(.gold),
+html[data-tema="claro"] .compras-header .btn:not(.primary):not(.gold) {
+  color: #34423a !important;
+
+  background: #dfe5e1 !important;
+
+  border-color: rgba(29, 45, 36, 0.15) !important;
+}
+
+html[data-tema="claro"] .admin-page-actions .btn:not(.primary):not(.gold):hover,
+html[data-tema="claro"] .compras-header .btn:not(.primary):not(.gold):hover {
+  color: #17231c !important;
+
+  background: #d5ddd8 !important;
+
+  border-color: rgba(29, 45, 36, 0.22) !important;
+}
+
+/* Botões desabilitados */
+html[data-tema="claro"] .btn.primary:disabled,
+html[data-tema="claro"] .btn.gold:disabled {
+  color: rgba(255, 255, 255, 0.75) !important;
+
+  background: #aeb9b2 !important;
+
+  border-color: #aeb9b2 !important;
+
+  box-shadow: none !important;
+
+  opacity: 0.65 !important;
+
+  transform: none !important;
+}
+
+/* =========================================================
+   TEMA CLARO — CONTRASTE DOS CONTROLES E ÍCONES
+========================================================= */
+
+html[data-tema="claro"] .admin-menu-button,
+html[data-tema="claro"] .admin-icon-button,
+html[data-tema="claro"] .admin-search,
+html[data-tema="claro"] .admin-user-menu,
+html[data-tema="claro"] .admin-user-info strong,
+html[data-tema="claro"] .admin-user-info span,
+html[data-tema="claro"] .admin-user-chevron {
+  color: #2f4036 !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .admin-search,
+html[data-tema="claro"] .admin-user-menu,
+html[data-tema="claro"] .admin-icon-button {
+  border-color: rgba(25, 40, 32, 0.14) !important;
+  background: rgba(255, 255, 255, 0.58) !important;
+}
+
+html[data-tema="claro"] .admin-search input {
+  color: #26362d !important;
+}
+
+html[data-tema="claro"] .admin-search input::placeholder {
+  color: #718078 !important;
+}
+
+html[data-tema="claro"] .relatorio-back,
+html[data-tema="claro"] .relatorio-filtro,
+html[data-tema="claro"] .relatorio-filtro svg {
+  color: #466057 !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .relatorio-filtros {
+  background: rgba(239, 243, 240, 0.9) !important;
+  border-color: rgba(25, 40, 32, 0.12) !important;
+}
+
+html[data-tema="claro"] .relatorio-filtro {
+  background: #f7f9f8 !important;
+  border-color: rgba(25, 40, 32, 0.15) !important;
+}
+
+html[data-tema="claro"] .relatorio-filtro input {
+  color: #23342a !important;
+  color-scheme: light !important;
+}
+
+html[data-tema="claro"]
+  .relatorio-filtro input::-webkit-calendar-picker-indicator {
+  opacity: 0.72;
+  filter: none;
+}
+
+html[data-tema="claro"] .relatorio-kpi-icon,
+html[data-tema="claro"] .relatorio-kpi-icon svg,
+html[data-tema="claro"] .relatorio-card-header svg,
+html[data-tema="claro"] .admin-sidebar-card-icon,
+html[data-tema="claro"] .admin-sidebar-card-arrow {
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .relatorio-card-header svg,
+html[data-tema="claro"] .admin-sidebar-card-icon,
+html[data-tema="claro"] .admin-sidebar-card-arrow {
+  color: #537064 !important;
+}
+
+html[data-tema="claro"] .admin-page a:not(.btn),
+html[data-tema="claro"] .admin-page button:not(.btn),
+html[data-tema="claro"] .admin-page svg {
+  opacity: 1;
+}
+
+html[data-tema="claro"] .admin-table th,
+html[data-tema="claro"] .admin-table td,
+html[data-tema="claro"] .admin-table td svg,
+html[data-tema="claro"] .relatorio-table th,
+html[data-tema="claro"] .relatorio-table td,
+html[data-tema="claro"] .relatorio-table td svg {
+  opacity: 1 !important;
+}

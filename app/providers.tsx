@@ -3,15 +3,38 @@
 import { ReactNode, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-const PREFIX = "abr-agro-";
+const PREFIXES = ["abr-agro-", "sistema-abr-"];
+const THEME_KEY = "abr-agro-configuracoes";
 const DELAY = 900;
+
+function aplicarTema(tema: "escuro" | "claro") {
+  document.documentElement.dataset.tema = tema;
+  document.documentElement.style.colorScheme =
+    tema === "claro" ? "light" : "dark";
+}
+
+function lerTemaDoStorage(): "escuro" | "claro" {
+  try {
+    const bruto = localStorage.getItem(THEME_KEY);
+
+    if (!bruto) return "escuro";
+
+    const dados = JSON.parse(bruto) as {
+      tema?: string;
+    };
+
+    return dados.tema === "claro" ? "claro" : "escuro";
+  } catch {
+    return "escuro";
+  }
+}
 
 function snapshot() {
   const state: Record<string, string> = {};
 
   for (let i = 0; i < localStorage.length; i += 1) {
     const key = localStorage.key(i);
-    if (!key?.startsWith(PREFIX)) continue;
+    if (!key || !PREFIXES.some((prefix) => key.startsWith(prefix))) continue;
 
     const value = localStorage.getItem(key);
     if (value !== null) state[key] = value;
@@ -25,7 +48,9 @@ function restore(state: Record<string, string>) {
 
   for (let i = 0; i < localStorage.length; i += 1) {
     const key = localStorage.key(i);
-    if (key?.startsWith(PREFIX)) remove.push(key);
+    if (key && PREFIXES.some((prefix) => key.startsWith(prefix))) {
+      remove.push(key);
+    }
   }
 
   remove.forEach((key) => localStorage.removeItem(key));
@@ -39,6 +64,8 @@ export default function Providers({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(pathname === "/login");
 
   useEffect(() => {
+    aplicarTema(lerTemaDoStorage());
+
     if (pathname === "/login") {
       setReady(true);
       return;
@@ -83,6 +110,7 @@ export default function Providers({ children }: { children: ReactNode }) {
 
           if (data.existe) {
             restore(data.state ?? {});
+            aplicarTema(lerTemaDoStorage());
           } else {
             await fetch("/api/state", {
               method: "PUT",
@@ -94,12 +122,22 @@ export default function Providers({ children }: { children: ReactNode }) {
 
           Storage.prototype.setItem = function (key, value) {
             originalSetItem.call(this, key, value);
-            if (key.startsWith(PREFIX)) schedule();
+
+            if (key === THEME_KEY) {
+              try {
+                const dados = JSON.parse(value) as { tema?: string };
+                aplicarTema(dados.tema === "claro" ? "claro" : "escuro");
+              } catch {
+                aplicarTema("escuro");
+              }
+            }
+
+            if (PREFIXES.some((prefix) => key.startsWith(prefix))) schedule();
           };
 
           Storage.prototype.removeItem = function (key) {
             originalRemoveItem.call(this, key);
-            if (key.startsWith(PREFIX)) schedule();
+            if (PREFIXES.some((prefix) => key.startsWith(prefix))) schedule();
           };
 
           installed = true;

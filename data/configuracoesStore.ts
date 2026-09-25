@@ -45,6 +45,8 @@ export type ConfigFinanceira = {
   caixaPrincipalNome: string;
 };
 
+export type TemaSistema = "escuro" | "claro";
+
 export type ConfigEstoque = {
   estoqueMinimoPadrao: number;
   estoqueMaximoPadrao: number;
@@ -58,6 +60,7 @@ export type ConfiguracoesSistema = {
   comercial: ConfigComercial;
   financeira: ConfigFinanceira;
   estoque: ConfigEstoque;
+  tema: TemaSistema;
   atualizadoEm: string;
 };
 
@@ -116,6 +119,7 @@ export const configuracoesPadrao: ConfiguracoesSistema = {
     permitirEstoqueNegativo: false,
     casasDecimaisQuantidade: 0,
   },
+  tema: "escuro",
   atualizadoEm: "",
 };
 
@@ -153,6 +157,10 @@ function mesclarConfiguracoes(
       ...padrao.estoque,
       ...(atual?.estoque ?? {}),
     },
+    tema:
+      atual?.tema === "claro" || atual?.tema === "escuro"
+        ? atual.tema
+        : padrao.tema,
   };
 }
 

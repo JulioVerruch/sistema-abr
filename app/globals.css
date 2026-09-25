@@ -30594,6 +30594,308 @@ html[data-tema="claro"] .btn.gold:disabled {
 }
 
 /* =========================================================
+   TEMA CLARO — SISTEMA VISUAL CONSOLIDADO
+========================================================= */
+
+html[data-tema="claro"] {
+  color-scheme: light;
+  --bg: #f4f7f5;
+  --bg-secondary: #edf3ef;
+  --card: #ffffff;
+  --card-soft: #f7faf8;
+  --muted: #5f7067;
+  --muted-light: #405148;
+  --line: #d7e1db;
+  --line-strong: #bdccc2;
+  --white: #17251d;
+  --black: #ffffff;
+  --green: #23613d;
+  --green-light: #2f8052;
+  --green-soft: #e2f0e7;
+  --gold: #b37a00;
+  --gold-light: #9a6700;
+  --gold-dark: #785000;
+  --success: #167746;
+  --warning: #986300;
+  --danger: #bd3e45;
+  --info: #286d9f;
+  --shadow-sm: 0 2px 10px rgba(36, 58, 46, 0.07);
+  --shadow-md: 0 12px 28px rgba(36, 58, 46, 0.09);
+}
+
+html[data-tema="claro"] body {
+  background: #f4f7f5 !important;
+  color: #17251d !important;
+}
+
+html[data-tema="claro"] .admin-shell {
+  background: #edf3ef !important;
+}
+
+html[data-tema="claro"] .admin-sidebar {
+  background: #f9fbfa !important;
+  border-right: 1px solid #d7e1db !important;
+  box-shadow: 2px 0 12px rgba(36, 58, 46, 0.035) !important;
+}
+
+html[data-tema="claro"] .admin-topbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #d7e1db !important;
+  box-shadow: 0 2px 10px rgba(36, 58, 46, 0.035) !important;
+}
+
+html[data-tema="claro"] .admin-page,
+html[data-tema="claro"] .admin-content {
+  color: #17251d !important;
+}
+
+html[data-tema="claro"] .admin-page h1,
+html[data-tema="claro"] .admin-page h2,
+html[data-tema="claro"] .admin-page h3,
+html[data-tema="claro"] .admin-page h4,
+html[data-tema="claro"] .admin-topbar h1,
+html[data-tema="claro"] .admin-brand strong,
+html[data-tema="claro"] .admin-user-info strong {
+  color: #17251d !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .admin-page p,
+html[data-tema="claro"] .admin-page small,
+html[data-tema="claro"] .admin-topbar p,
+html[data-tema="claro"] .admin-brand span,
+html[data-tema="claro"] .admin-user-info span,
+html[data-tema="claro"] .text-muted {
+  color: #5f7067 !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .admin-eyebrow,
+html[data-tema="claro"] .admin-nav-label {
+  color: #9a6700 !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .admin-nav-label {
+  color: #718078 !important;
+}
+
+html[data-tema="claro"] .admin-nav-link {
+  color: #43564b !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .admin-nav-link svg {
+  color: #60736a !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .admin-nav-link:hover {
+  color: #1e3b2a !important;
+  background: #eef6f0 !important;
+  border-color: #c5d9ca !important;
+}
+
+html[data-tema="claro"] .admin-nav-link.is-active {
+  color: #1d4b2d !important;
+  background: #dceee2 !important;
+  border-color: #b9d3c0 !important;
+  box-shadow: inset 3px 0 0 #b37a00 !important;
+}
+
+html[data-tema="claro"] .admin-nav-link.is-active svg {
+  color: #23613d !important;
+}
+
+html[data-tema="claro"] .admin-card,
+html[data-tema="claro"] .admin-kpi-card,
+html[data-tema="claro"] .admin-actions,
+html[data-tema="claro"] .admin-sidebar-card,
+html[data-tema="claro"] .admin-shortcut,
+html[data-tema="claro"] .admin-stats > div,
+html[data-tema="claro"] .admin-table-wrap,
+html[data-tema="claro"] .relatorio-card,
+html[data-tema="claro"] .relatorio-kpi,
+html[data-tema="claro"] .financeiro-resumo-card,
+html[data-tema="claro"] .vendas-resumo-card,
+html[data-tema="claro"] .caixa-card {
+  background: #ffffff !important;
+  border: 1px solid #d7e1db !important;
+  color: #17251d !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+html[data-tema="claro"] .admin-card:hover,
+html[data-tema="claro"] .admin-shortcut:hover,
+html[data-tema="claro"] .vendas-resumo-card:hover {
+  border-color: #bfd4c5 !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+html[data-tema="claro"] .admin-card h3,
+html[data-tema="claro"] .admin-kpi-card strong,
+html[data-tema="claro"] .admin-shortcut strong,
+html[data-tema="claro"] .relatorio-card h2,
+html[data-tema="claro"] .relatorio-card h3,
+html[data-tema="claro"] .relatorio-kpi strong,
+html[data-tema="claro"] .financeiro-resumo-card strong,
+html[data-tema="claro"] .vendas-resumo-card strong {
+  color: #17251d !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .admin-kpi-card span,
+html[data-tema="claro"] .admin-kpi-card p,
+html[data-tema="claro"] .relatorio-kpi span,
+html[data-tema="claro"] .financeiro-resumo-card span,
+html[data-tema="claro"] .vendas-resumo-card span {
+  color: #5f7067 !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .admin-search,
+html[data-tema="claro"] .admin-icon-button,
+html[data-tema="claro"] .admin-user-menu {
+  background: #f7faf8 !important;
+  border: 1px solid #d2ded6 !important;
+  color: #344a3e !important;
+}
+
+html[data-tema="claro"] .admin-search input {
+  color: #23372b !important;
+}
+
+html[data-tema="claro"] .admin-search input::placeholder {
+  color: #75857c !important;
+}
+
+html[data-tema="claro"] input,
+html[data-tema="claro"] select,
+html[data-tema="claro"] textarea,
+html[data-tema="claro"] .input,
+html[data-tema="claro"] .select,
+html[data-tema="claro"] .textarea {
+  background: #ffffff !important;
+  color: #203329 !important;
+  border: 1px solid #bdccc2 !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] input::placeholder,
+html[data-tema="claro"] textarea::placeholder,
+html[data-tema="claro"] .input::placeholder,
+html[data-tema="claro"] .textarea::placeholder {
+  color: #7b8b82 !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] input:focus,
+html[data-tema="claro"] select:focus,
+html[data-tema="claro"] textarea:focus,
+html[data-tema="claro"] .input:focus,
+html[data-tema="claro"] .select:focus,
+html[data-tema="claro"] .textarea:focus {
+  border-color: #4c9668 !important;
+  box-shadow: 0 0 0 3px rgba(47, 128, 82, 0.14) !important;
+}
+
+html[data-tema="claro"] .form-label,
+html[data-tema="claro"] .configuracao-field > span,
+html[data-tema="claro"] .financeiro-filtros label,
+html[data-tema="claro"] .relatorio-filtro label {
+  color: #405148 !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .relatorio-filtros,
+html[data-tema="claro"] .vendas-filtros,
+html[data-tema="claro"] .financeiro-filtros {
+  background: #f7faf8 !important;
+  border: 1px solid #d7e1db !important;
+  box-shadow: none !important;
+}
+
+html[data-tema="claro"] .relatorio-filtro,
+html[data-tema="claro"] .relatorio-filtro input {
+  color: #405148 !important;
+  background: #ffffff !important;
+}
+
+html[data-tema="claro"] .relatorio-filtro input {
+  color-scheme: light !important;
+}
+
+html[data-tema="claro"] .relatorio-filtro svg,
+html[data-tema="claro"] .relatorio-card-header svg,
+html[data-tema="claro"] .admin-card svg,
+html[data-tema="claro"] .admin-kpi-card svg,
+html[data-tema="claro"] .admin-sidebar-card svg {
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .admin-table th,
+html[data-tema="claro"] .relatorio-table th {
+  background: #edf3ef !important;
+  color: #52645a !important;
+  border-color: #d7e1db !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .admin-table td,
+html[data-tema="claro"] .relatorio-table td {
+  color: #2f4236 !important;
+  border-color: #e1e9e4 !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .admin-table tbody tr:hover td,
+html[data-tema="claro"] .relatorio-table tbody tr:hover td {
+  background: #f2f8f4 !important;
+}
+
+html[data-tema="claro"] .btn:not(.primary):not(.gold) {
+  background: #f7faf8 !important;
+  border-color: #bdccc2 !important;
+  color: #2f493a !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .btn:not(.primary):not(.gold):hover {
+  background: #edf6f0 !important;
+  border-color: #8fb99c !important;
+  color: #1f3c2a !important;
+}
+
+html[data-tema="claro"] .btn.primary {
+  background: #2f8052 !important;
+  border-color: #2f8052 !important;
+  color: #ffffff !important;
+}
+
+html[data-tema="claro"] .btn.gold {
+  background: #c28b18 !important;
+  border-color: #b37a00 !important;
+  color: #241b08 !important;
+}
+
+html[data-tema="claro"] .status-badge,
+html[data-tema="claro"] .tag,
+html[data-tema="claro"] .badge {
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .relatorio-back,
+html[data-tema="claro"] .admin-page a:not(.btn) {
+  color: #35684a !important;
+  opacity: 1 !important;
+}
+
+html[data-tema="claro"] .relatorio-back:hover,
+html[data-tema="claro"] .admin-page a:not(.btn):hover {
+  color: #1d4b2d !important;
+}
+
+/* =========================================================
    TEMA CLARO — CONTRASTE DOS CONTROLES E ÍCONES
 ========================================================= */
 

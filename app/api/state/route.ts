@@ -119,3 +119,7 @@ export async function PUT(request: NextRequest) {
     );
   }
 }
+
+// navigator.sendBeacon só envia POST (usado como último envio antes de
+// a página fechar/recarregar), então aceitamos o mesmo formato aqui.
+export const POST = PUT;

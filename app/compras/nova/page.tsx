@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FormEvent, useMemo, useState } from "react";
 import {
   ArrowLeft,
@@ -75,6 +76,7 @@ function gerarIdItem() {
 }
 
 export default function NovaCompraPage() {
+  const router = useRouter();
   const configuracoes = useMemo(() => obterConfiguracoes(), []);
 
   const formasPagamentoAtivas = useMemo(
@@ -416,7 +418,7 @@ export default function NovaCompraPage() {
         status: "pendente",
       });
 
-      window.location.href = "/compras";
+      router.push("/compras");
     } catch (error) {
       console.error("Erro ao criar compra:", error);
 

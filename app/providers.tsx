@@ -96,6 +96,24 @@ export default function Providers({ children }: { children: ReactNode }) {
     const originalSetItem = Storage.prototype.setItem;
     const originalRemoveItem = Storage.prototype.removeItem;
 
+    // Envio de última hora caso a página feche/recarregue antes do
+    // debounce normal disparar (ex.: window.location.href, fechar aba,
+    // voltar/avançar do navegador). sendBeacon funciona durante o unload.
+    const flushComBeacon = () => {
+      try {
+        const payload = JSON.stringify({ state: snapshot() });
+        navigator.sendBeacon?.(
+          "/api/state",
+          new Blob([payload], { type: "application/json" }),
+        );
+      } catch (error) {
+        console.error("[ABR] cloud beacon", error);
+      }
+    };
+
+    window.addEventListener("pagehide", flushComBeacon);
+    window.addEventListener("beforeunload", flushComBeacon);
+
     const schedule = () => {
       if (timer) window.clearTimeout(timer);
 
@@ -180,6 +198,8 @@ export default function Providers({ children }: { children: ReactNode }) {
 
     return () => {
       alive = false;
+      window.removeEventListener("pagehide", flushComBeacon);
+      window.removeEventListener("beforeunload", flushComBeacon);
       // Não cancela o timer de sincronização pendente nem remove os
       // overrides do Storage: eles devem sobreviver a trocas de página
       // dentro da mesma sessão, senão uma navegação rápida cancela um

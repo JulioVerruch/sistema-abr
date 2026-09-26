@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import {
   ArrowLeft,
@@ -23,6 +24,7 @@ import {
 } from "../../../data/fornecedoresStore";
 
 export default function NovoFornecedorPage() {
+  const router = useRouter();
   const [razaoSocial, setRazaoSocial] = useState("");
 
   const [nomeFantasia, setNomeFantasia] = useState("");
@@ -122,7 +124,7 @@ export default function NovoFornecedorPage() {
         status: "ativo",
       });
 
-      window.location.href = "/fornecedores";
+      router.push("/fornecedores");
     } catch (error) {
       console.error("Erro ao criar fornecedor:", error);
 

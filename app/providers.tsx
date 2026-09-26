@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 const PREFIXES = ["abr-agro-", "sistema-abr-"];
@@ -73,6 +73,7 @@ function restore(state: Record<string, string>) {
 export default function Providers({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const [ready, setReady] = useState(pathname === "/login");
+  const bootedRef = useRef(false);
 
   useEffect(() => {
     aplicarTema(lerTemaDoStorage());
@@ -82,9 +83,15 @@ export default function Providers({ children }: { children: ReactNode }) {
       return;
     }
 
+    // Já sincronizou nesta sessão do navegador: não refaz boot/restore
+    // a cada troca de página, apenas mantém a UI liberada.
+    if (bootedRef.current) {
+      setReady(true);
+      return;
+    }
+
     let alive = true;
     let timer: number | undefined;
-    let installed = false;
 
     const originalSetItem = Storage.prototype.setItem;
     const originalRemoveItem = Storage.prototype.removeItem;
@@ -160,7 +167,7 @@ export default function Providers({ children }: { children: ReactNode }) {
             if (PREFIXES.some((prefix) => key.startsWith(prefix))) schedule();
           };
 
-          installed = true;
+          bootedRef.current = true;
         }
       } catch (error) {
         console.error("[ABR] cloud boot", error);
@@ -173,12 +180,10 @@ export default function Providers({ children }: { children: ReactNode }) {
 
     return () => {
       alive = false;
-      if (timer) window.clearTimeout(timer);
-
-      if (installed) {
-        Storage.prototype.setItem = originalSetItem;
-        Storage.prototype.removeItem = originalRemoveItem;
-      }
+      // Não cancela o timer de sincronização pendente nem remove os
+      // overrides do Storage: eles devem sobreviver a trocas de página
+      // dentro da mesma sessão, senão uma navegação rápida cancela um
+      // envio ao servidor que ainda não tinha sido concluído.
     };
   }, [pathname]);
 

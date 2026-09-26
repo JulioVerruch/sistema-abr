@@ -43,6 +43,17 @@ function snapshot() {
   return state;
 }
 
+function hasMeaningfulState(state: Record<string, string> | undefined) {
+  if (!state || Object.keys(state).length === 0) {
+    return false;
+  }
+
+  return Object.values(state).some((value) => {
+    const trimmed = String(value ?? "").trim();
+    return trimmed.length > 0 && trimmed !== "[]" && trimmed !== "{}";
+  });
+}
+
 function restore(state: Record<string, string>) {
   const remove: string[] = [];
 
@@ -109,8 +120,17 @@ export default function Providers({ children }: { children: ReactNode }) {
           };
 
           if (data.existe) {
-            restore(data.state ?? {});
-            aplicarTema(lerTemaDoStorage());
+            if (hasMeaningfulState(data.state)) {
+              restore(data.state ?? {});
+              aplicarTema(lerTemaDoStorage());
+            } else {
+              await fetch("/api/state", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                credentials: "same-origin",
+                body: JSON.stringify({ state: snapshot() }),
+              });
+            }
           } else {
             await fetch("/api/state", {
               method: "PUT",

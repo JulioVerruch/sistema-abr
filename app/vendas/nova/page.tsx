@@ -136,6 +136,14 @@ export default function NovaVendaPage() {
   const [observacao, setObservacao] = useState("");
 
   /* =======================================================
+     DATA DA VENDA
+     ======================================================= */
+
+  const [dataVenda, setDataVenda] = useState(() =>
+    new Date().toISOString().slice(0, 10),
+  );
+
+  /* =======================================================
      ESTADO
      ======================================================= */
 
@@ -680,6 +688,8 @@ export default function NovaVendaPage() {
         status,
 
         observacao: observacao.trim() || undefined,
+
+        dataVenda,
       });
 
       router.push(`/vendas/${venda.id}`);
@@ -1151,11 +1161,26 @@ export default function NovaVendaPage() {
                 <div>
                   <span className="admin-eyebrow">Informações adicionais</span>
 
-                  <h3>Observação</h3>
+                  <h3>Data e observação</h3>
                 </div>
 
                 <FileText size={23} />
               </div>
+
+              <label className="form-field">
+                <span>Data da venda</span>
+
+                <div className="compras-input-icon">
+                  <FileText size={17} />
+
+                  <input
+                    type="date"
+                    value={dataVenda}
+                    onChange={(event) => setDataVenda(event.target.value)}
+                    required
+                  />
+                </div>
+              </label>
 
               <textarea
                 className="vendas-observacao"

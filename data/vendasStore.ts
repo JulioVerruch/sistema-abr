@@ -142,6 +142,8 @@ export interface DadosNovaVenda {
   status?: StatusVenda;
 
   observacao?: string;
+
+  dataVenda?: string;
 }
 
 /* =========================================================
@@ -902,7 +904,9 @@ export function criarVenda(dados: DadosNovaVenda): Venda {
       ) / 100,
     ),
     status: dados.status ?? "rascunho",
-    dataVenda: agora,
+    dataVenda: dados.dataVenda
+      ? new Date(`${dados.dataVenda}T12:00:00`).toISOString()
+      : agora,
     dataCriacao: agora,
     dataAtualizacao: agora,
     observacao: dados.observacao?.trim() || undefined,

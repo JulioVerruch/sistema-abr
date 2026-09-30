@@ -90,6 +90,42 @@ export async function PUT(request: NextRequest) {
 
     const { url, key } = config();
 
+    const existingResponse = await fetch(
+      `${url}/rest/v1/${TABLE}?id=eq.${ROW_ID}&select=state`,
+      { headers: headers(key), cache: "no-store" },
+    );
+
+    if (!existingResponse.ok) {
+      return NextResponse.json(
+        { mensagem: "Falha ao validar os dados centrais." },
+        { status: 502 },
+      );
+    }
+
+    const existingRows = (await existingResponse.json()) as Array<{
+      state?: Record<string, string>;
+    }>;
+    const existingState = existingRows[0]?.state ?? {};
+    const safeState = { ...body.state };
+
+    Object.entries(existingState).forEach(([stateKey, existingValue]) => {
+      const incomingValue = safeState[stateKey];
+
+      if (!incomingValue || incomingValue.trim() === "[]") {
+        try {
+          const existingParsed = JSON.parse(existingValue);
+
+          if (Array.isArray(existingParsed) && existingParsed.length > 0) {
+            safeState[stateKey] = existingValue;
+          }
+        } catch {
+          // Valores não JSON não participam da proteção contra limpeza acidental.
+        }
+      }
+    });
+
+    const updatedAt = new Date().toISOString();
+
     const response = await fetch(`${url}/rest/v1/${TABLE}`, {
       method: "POST",
       headers: {
@@ -98,8 +134,8 @@ export async function PUT(request: NextRequest) {
       },
       body: JSON.stringify({
         id: ROW_ID,
-        state: body.state,
-        updated_at: new Date().toISOString(),
+        state: safeState,
+        updated_at: updatedAt,
       }),
     });
 
@@ -110,7 +146,7 @@ export async function PUT(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({ sucesso: true });
+    return NextResponse.json({ sucesso: true, updatedAt });
   } catch (error) {
     console.error("[ABR] state PUT", error);
     return NextResponse.json(

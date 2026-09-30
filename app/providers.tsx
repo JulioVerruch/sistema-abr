@@ -6,6 +6,10 @@ import { usePathname } from "next/navigation";
 const PREFIXES = ["abr-agro-", "sistema-abr-"];
 const THEME_KEY = "abr-agro-configuracoes";
 const DELAY = 900;
+// Fica fora dos PREFIXES de propósito: não pode ser apagada pelo restore()
+// nem reenviada à nuvem, só serve para este navegador saber se já está
+// sincronizado com a última versão salva no servidor.
+const MARCA_SYNC_KEY = "abr-cloud-sync-marca";
 
 function aplicarTema(tema: "escuro" | "claro") {
   document.documentElement.dataset.tema = tema;
@@ -114,17 +118,67 @@ export default function Providers({ children }: { children: ReactNode }) {
     window.addEventListener("pagehide", flushComBeacon);
     window.addEventListener("beforeunload", flushComBeacon);
 
+    // Envia o snapshot atual para a nuvem e guarda a marca de sincronismo
+    // retornada, para sabermos depois se algum outro dispositivo alterou
+    // os dados nesse meio tempo.
+    const enviarParaNuvem = async () => {
+      const resposta = await fetch("/api/state", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({ state: snapshot() }),
+      });
+
+      if (resposta.ok) {
+        const resultado = (await resposta.json()) as { updatedAt?: string };
+        if (resultado.updatedAt) {
+          originalSetItem.call(localStorage, MARCA_SYNC_KEY, resultado.updatedAt);
+        }
+      }
+
+      return resposta;
+    };
+
     const schedule = () => {
       if (timer) window.clearTimeout(timer);
 
       timer = window.setTimeout(async () => {
         try {
-          await fetch("/api/state", {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
+          // Confere se a nuvem ainda está na versão que vimos por último.
+          // Se outro dispositivo/aba já sincronizou dados mais novos,
+          // NÃO sobrescreve: isso é o que apagava produtos/vendas recentes.
+          const checagem = await fetch("/api/state", {
             credentials: "same-origin",
-            body: JSON.stringify({ state: snapshot() }),
+            cache: "no-store",
           });
+
+          if (checagem.ok) {
+            const atual = (await checagem.json()) as {
+              existe: boolean;
+              state?: Record<string, string>;
+              updatedAt?: string;
+            };
+            const marcaConhecida = localStorage.getItem(MARCA_SYNC_KEY);
+
+            if (
+              atual.existe &&
+              atual.updatedAt &&
+              marcaConhecida &&
+              atual.updatedAt !== marcaConhecida
+            ) {
+              // Outra sessão já salvou uma versão mais nova: adota os dados
+              // dela em vez de sobrescrever (evita perder produtos/vendas).
+              console.warn(
+                "[ABR] dados na nuvem foram atualizados por outra sessão; recarregando.",
+              );
+              restore(atual.state ?? {});
+              aplicarTema(lerTemaDoStorage());
+              originalSetItem.call(localStorage, MARCA_SYNC_KEY, atual.updatedAt);
+              return;
+            }
+          }
+
+          await enviarParaNuvem();
         } catch (error) {
           console.error("[ABR] cloud sync", error);
         }
@@ -142,27 +196,21 @@ export default function Providers({ children }: { children: ReactNode }) {
           const data = (await response.json()) as {
             existe: boolean;
             state?: Record<string, string>;
+            updatedAt?: string;
           };
 
           if (data.existe) {
             if (hasMeaningfulState(data.state)) {
               restore(data.state ?? {});
               aplicarTema(lerTemaDoStorage());
+              if (data.updatedAt) {
+                originalSetItem.call(localStorage, MARCA_SYNC_KEY, data.updatedAt);
+              }
             } else {
-              await fetch("/api/state", {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                credentials: "same-origin",
-                body: JSON.stringify({ state: snapshot() }),
-              });
+              await enviarParaNuvem();
             }
           } else {
-            await fetch("/api/state", {
-              method: "PUT",
-              headers: { "Content-Type": "application/json" },
-              credentials: "same-origin",
-              body: JSON.stringify({ state: snapshot() }),
-            });
+            await enviarParaNuvem();
           }
 
           Storage.prototype.setItem = function (key, value) {

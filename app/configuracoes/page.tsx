@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Building2,
   Check,
@@ -15,6 +15,7 @@ import {
   Store,
   Moon,
   Sun,
+  Upload,
 } from "lucide-react";
 
 import { AppShell } from "../../components/layout/AppShell";
@@ -94,6 +95,7 @@ export default function ConfiguracoesPage() {
   const [salvoEm, setSalvoEm] = useState("");
   const [salvando, setSalvando] = useState(false);
   const [mensagem, setMensagem] = useState("");
+  const inputBackupRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const config = obterConfiguracoes();
@@ -148,6 +150,61 @@ export default function ConfiguracoesPage() {
     setDados(resultado);
     setSalvoEm(resultado.atualizadoEm);
     setMensagem("Configurações padrão restauradas.");
+  }
+
+  // Mapa das listas de negócio (formato usado nos backups exportados) para
+  // as chaves reais do localStorage usadas por cada módulo.
+  const MAPA_BACKUP: Record<string, string> = {
+    produtos: "abr-agro-produtos",
+    vendas: "abr-agro-vendas",
+    clientes: "abr-agro-clientes",
+    compras: "sistema-abr-compras",
+    fornecedores: "sistema-abr-fornecedores",
+  };
+
+  function abrirSeletorBackup() {
+    inputBackupRef.current?.click();
+  }
+
+  async function importarBackup(arquivo: File) {
+    let dados: Record<string, unknown>;
+
+    try {
+      dados = JSON.parse(await arquivo.text());
+    } catch {
+      window.alert("Arquivo inválido: não é um JSON válido.");
+      return;
+    }
+
+    const chavesEncontradas = Object.keys(MAPA_BACKUP).filter((chave) =>
+      Array.isArray(dados[chave]),
+    );
+
+    if (chavesEncontradas.length === 0) {
+      window.alert("Nenhum dado reconhecido nesse arquivo de backup.");
+      return;
+    }
+
+    const confirmou = window.confirm(
+      `Este backup contém: ${chavesEncontradas.join(", ")}.\n\n` +
+        "Importar vai substituir os dados atuais desses módulos. Continuar?",
+    );
+
+    if (!confirmou) return;
+
+    chavesEncontradas.forEach((chave) => {
+      window.localStorage.setItem(
+        MAPA_BACKUP[chave],
+        JSON.stringify(dados[chave]),
+      );
+    });
+
+    // Evita que a migração antiga de "produtos seed" apague produtos reais
+    // que reaproveitam os códigos ABR-001 a ABR-036.
+    window.localStorage.setItem("abr-agro-produtos-seed-removido", "1");
+
+    window.alert("Backup importado com sucesso. A página será recarregada.");
+    window.location.reload();
   }
 
   function setEmpresa(
@@ -230,6 +287,23 @@ export default function ConfiguracoesPage() {
           </div>
 
           <div className="configuracoes-actions">
+            <input
+              type="file"
+              accept="application/json"
+              ref={inputBackupRef}
+              style={{ display: "none" }}
+              onChange={(evento) => {
+                const arquivo = evento.target.files?.[0];
+                if (arquivo) void importarBackup(arquivo);
+                evento.target.value = "";
+              }}
+            />
+
+            <button type="button" className="btn" onClick={abrirSeletorBackup}>
+              <Upload size={16} />
+              Importar backup
+            </button>
+
             <button type="button" className="btn" onClick={restaurar}>
               <RotateCcw size={16} />
               Restaurar padrão

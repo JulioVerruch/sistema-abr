@@ -98,15 +98,17 @@ export default function ProdutosPage() {
     carregarProdutos();
 
     const atualizarProdutos = (event: StorageEvent) => {
-      if (event.key === "abr-agro-produtos") {
+      if (event.key === "abr-agro-produtos" || event.key === null) {
         carregarProdutos();
       }
     };
 
     window.addEventListener("storage", atualizarProdutos);
+    window.addEventListener("abr-agro-produtos-atualizados", carregarProdutos);
 
     return () => {
       window.removeEventListener("storage", atualizarProdutos);
+      window.removeEventListener("abr-agro-produtos-atualizados", carregarProdutos);
     };
   }, []);
 

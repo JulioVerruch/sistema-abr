@@ -21,7 +21,6 @@ export type Produto = {
 import { obterConfiguracoes } from "./configuracoesStore";
 
 const CHAVE_PRODUTOS = "abr-agro-produtos";
-const CHAVE_MIGRACAO_PRODUTOS = "abr-agro-produtos-seed-removido";
 
 function temJanela() {
   return typeof window !== "undefined";
@@ -69,7 +68,6 @@ export function obterProdutos(): Produto[] {
 
     if (!produtosSalvos) {
       localStorage.setItem(CHAVE_PRODUTOS, JSON.stringify([]));
-      localStorage.setItem(CHAVE_MIGRACAO_PRODUTOS, "1");
 
       return [];
     }
@@ -78,20 +76,6 @@ export function obterProdutos(): Produto[] {
 
     if (!Array.isArray(produtos)) {
       return [];
-    }
-
-    if (!localStorage.getItem(CHAVE_MIGRACAO_PRODUTOS)) {
-      const produtosSemSeed = produtos.filter((produto) => {
-        const numeroCodigo = produto.codigo.match(/^ABR-(\d{3})$/)?.[1];
-        const idEhSeed = produto.id >= 1 && produto.id <= 36;
-
-        return !idEhSeed || !numeroCodigo || Number(numeroCodigo) > 36;
-      });
-
-      localStorage.setItem(CHAVE_PRODUTOS, JSON.stringify(produtosSemSeed));
-      localStorage.setItem(CHAVE_MIGRACAO_PRODUTOS, "1");
-
-      return produtosSemSeed;
     }
 
     return produtos;

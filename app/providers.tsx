@@ -59,6 +59,7 @@ function hasMeaningfulState(state: Record<string, string> | undefined) {
 }
 
 function restore(state: Record<string, string>) {
+  const anterior = snapshot();
   const remove: string[] = [];
 
   for (let i = 0; i < localStorage.length; i += 1) {
@@ -72,6 +73,24 @@ function restore(state: Record<string, string>) {
   Object.entries(state).forEach(([key, value]) =>
     localStorage.setItem(key, value),
   );
+
+  const chaves = new Set([...Object.keys(anterior), ...Object.keys(state)]);
+
+  chaves.forEach((key) => {
+    const oldValue = anterior[key] ?? null;
+    const newValue = state[key] ?? null;
+
+    if (oldValue !== newValue) {
+      window.dispatchEvent(
+        new StorageEvent("storage", {
+          key,
+          oldValue,
+          newValue,
+          storageArea: localStorage,
+        }),
+      );
+    }
+  });
 }
 
 export default function Providers({ children }: { children: ReactNode }) {
